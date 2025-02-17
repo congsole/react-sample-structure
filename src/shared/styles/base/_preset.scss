@@ -1,0 +1,112 @@
+// 마진 / 패딩 설정
+@for $i from 0 through 5 {
+  .mt#{$i*10} {
+    margin-top: #{$i * 10}px !important;
+  }
+  .mb#{$i*10} {
+    margin-bottom: #{$i * 10}px !important;
+  }
+  .pt#{$i*10} {
+    padding-top: #{$i * 10}px !important;
+  }
+  .pb#{$i*10} {
+    padding-bottom: #{$i * 10}px !important;
+  }
+}
+
+// 마진 0
+.mgn {
+  margin: 0 !important;
+}
+// 마진 top 0
+.mtn {
+  margin-top: 0 !important;
+}
+// 패딩 0
+.pdn {
+  padding: 0 !important;
+}
+// 패딩 top 0
+.ptn {
+  padding-top: 0 !important;
+}
+
+.ant-input-affix-wrapper {
+  .ant-input-suffix {
+    .ant-input-show-count-suffix {
+      @include font(12px, var(--text-a), null, var(--fw-medium));
+    }
+  }
+}
+
+.ant-input-textarea-affix-wrapper {
+  &.ant-input-show-count {
+    margin-bottom: 15px;
+    .ant-input-suffix {
+      .ant-input-data-count {
+        right: 10px;
+        @include font(12px, var(--text-a), null, var(--fw-medium));
+      }
+    }
+  }
+}
+
+.ant-spin {
+  .ant-spin-dot-holder {
+    color: var(--bg-8e) !important;
+  }
+}
+
+.chat-loading {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  .dot-before {
+    background: var(--primary);
+    animation: loaderBefore 1s ease-in-out infinite;
+  }
+  .dot-after {
+    background: var(--bg-b47);
+    animation: loaderAfter 1s ease-in-out infinite;
+  }
+  .dot {
+    width: 8px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+  }
+}
+
+@keyframes loaderBefore {
+  0% {
+    background: var(--primary);
+  }
+  100% {
+    background: var(--bg-b47);
+  }
+}
+
+@keyframes loaderAfter {
+  0% {
+    background: var(--bg-b47);
+  }
+  100% {
+    background: var(--primary);
+  }
+}
+
+.modal-bg {
+  z-index: 10;
+  @include center(def);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+  }
+}

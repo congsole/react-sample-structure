@@ -1,0 +1,170 @@
+.common {
+  .main-content {
+    padding: 0;
+    &.scrollbar {
+      overflow-y: auto;
+    }
+    .layout-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .no-perms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 112px);
+    min-height: 600px;
+    .txt-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 50px;
+      text-align: center;
+      .icon {
+        background: url("../../../assets/images/bg/bg_no_permission.svg") no-repeat 0 / contain;
+        width: 283px;
+        height: 260px;
+        &.inspec {
+          background: url("../../../assets/images/bg/bg_inspection.svg") no-repeat 0 / contain;
+        }
+        &.error {
+          background: url("../../../assets/images/bg/bg_error.svg") no-repeat 0 / contain;
+        }
+      }
+      .txt {
+        @include font(32px, var(--text-3c), 1.4, var(--fw-bold));
+        .cmt {
+          margin-top: 8px;
+          @include font(18px, var(--text-3c), 1.4);
+        }
+        .home {
+          margin-top: 10px;
+          & > a {
+            display: inline-flex;
+            align-items: center;
+            @include font(32px, var(--primary), 1.4, var(--fw-bold));
+            .ui-icons {
+              margin-left: 4px;
+            }
+          }
+        }
+      }
+      .mail {
+        display: flex;
+        align-items: center;
+        .team {
+          color: var(--text-57);
+          &::after {
+            content: "|";
+            margin: 0 8px;
+          }
+        }
+        & > a {
+          color: var(--text-ac);
+          border-bottom: 1px solid var(--border-e0);
+        }
+        &-set {
+          width: 100%;
+          .desc {
+            margin-bottom: 12px;
+            @include font(16px, var(--text-57), 1.4, var(--fw-bold));
+          }
+          .mail {
+            justify-content: center;
+          }
+        }
+      }
+      .time {
+        display: flex;
+        align-items: center;
+        padding: 12px 24px;
+        background: var(--border-f6);
+        border-radius: 50px;
+        .label {
+          @include font(16px, var(--text-57), 1.4, var(--fw-bold));
+          &::after {
+            content: "|";
+            margin: 0 8px;
+            color: var(--border-e0);
+          }
+        }
+        .txt {
+          @include font(16px, var(--text-57), 1.4, var(--fw-regular));
+        }
+      }
+    }
+  }
+  &.parking {
+    background: #f1f2ff;
+    .noti-info-content {
+      width: 100%;
+      max-width: 1500px;
+      margin: auto !important;
+      padding: 40px;
+      .card {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        max-width: 1160px;
+        height: 650px;
+        margin: 0 auto;
+        border-radius: 40px;
+        background: var(--white);
+        box-shadow: 0px 10px 20px 0px rgba(218, 217, 255, 0.5);
+        .pk-set {
+          width: 520px;
+          height: 100%;
+          padding: 100px;
+          .tit {
+            @include font(60px, var(--text-3c), 1.4, var(--fw-extra));
+            & > strong {
+              @include font(60px, var(--primary), 1.4, var(--fw-extra));
+            }
+          }
+          .txt {
+            margin-top: 60px;
+            @include font(24px, var(--text-57), 1.4);
+          }
+        }
+        .rgt-set {
+          position: relative;
+          .bg {
+            width: 640px;
+            height: 650px;
+            filter: blur(10px);
+            background: url("../../../assets/images/bg/bg_parking.png") no-repeat 0 / cover;
+          }
+          .txt {
+            z-index: 3;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            @include font(40px, var(--white), 1.4, var(--fw-extra));
+            .date {
+              margin-top: 8px;
+              padding-top: 8px;
+              border-top: 1px dashed var(--white);
+              @include font(32px, var(--white), 1.4, var(--fw-bold));
+            }
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-1c);
+          }
+        }
+      }
+    }
+  }
+}

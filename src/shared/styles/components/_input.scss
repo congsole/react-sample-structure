@@ -1,0 +1,196 @@
+.ant-input {
+  width: 100%;
+  padding: 0 16px;
+  border: none;
+  &-affix-wrapper {
+    border: 1px solid var(--border-e0) !important;
+    border-radius: 8px !important;
+    @include font(16px !important, var(--text-3c), null, var(--fw-medium));
+    &:focus-within {
+      box-shadow: none !important;
+    }
+    &:hover {
+      border-color: var(--primary) !important;
+    }
+    &::placeholder {
+      @include font(16px !important, var(--text-ac), null, var(--fw-medium));
+    }
+    &.lg {
+      height: 40px;
+      @include font(16px !important, var(--text-3c), null, var(--fw-medium));
+    }
+    .ant-input {
+      &::placeholder {
+        @include font(16px !important, var(--text-ac), null, var(--fw-medium));
+      }
+    }
+  }
+  &::placeholder {
+    @include font(16px !important, var(--text-ac), null, var(--fw-medium));
+  }
+  &:focus {
+    box-shadow: none !important;
+  }
+  &.lg {
+    height: 40px;
+    @include font(16px !important, var(--text-3c), null, var(--fw-medium));
+  }
+  &-textarea-affix-wrapper {
+    &.lg {
+      .ant-input {
+        @include font(16px !important, var(--text-3c) !important, null, var(--fw-medium));
+        &::placeholder {
+          @include font(16px !important, var(--text-ac), null, var(--fw-medium));
+        }
+      }
+    }
+  }
+}
+.inp-wrap {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border-e0) !important;
+  .ant-input {
+    border-radius: 8px;
+    @include font(16px !important, var(--text-3c), null, var(--fw-medium));
+    &::placeholder {
+      @include font(16px !important, var(--text-ac), null, var(--fw-medium));
+    }
+    &.lg {
+      @include font(16px !important, var(--text-3c), null, var(--fw-medium));
+      &::placeholder {
+        @include font(16px !important, var(--text-ac), null, var(--fw-medium));
+      }
+    }
+  }
+  .ant-input {
+    &-affix-wrapper {
+      border: none !important;
+    }
+  }
+  &:hover {
+    border-color: var(--primary);
+  }
+  .ant-select-auto-complete {
+    width: 100% !important;
+    @include font(16px !important, var(--text-3c), null, var(--fw-medium));
+    .ant-select-selector {
+      border: none !important;
+      .ant-select-selection {
+        &-search-input {
+          @include font(16px !important, var(--text-3c), null, var(--fw-medium));
+        }
+        &-placeholder {
+          @include font(16px !important, var(--text-ac), null, var(--fw-medium));
+        }
+      }
+    }
+    &:hover {
+      border: none !important;
+    }
+  }
+  &.complete-set {
+    margin-top: 10px;
+  }
+}
+.inp-search {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 8px 0 16px;
+  border: 1px solid var(--border-e0) !important;
+  border-radius: 8px;
+  .inp {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border-radius: 8px;
+    border: 0;
+    @include font(16px, var(--text-ac), null, var(--fw-medium));
+    &::placeholder {
+      @include font(16px, var(--text-ac), null, var(--fw-medium));
+    }
+  }
+  &:hover {
+    border-color: var(--primary);
+  }
+  .ant-input {
+    &-group-wrapper {
+      height: 100%;
+      border: none;
+    }
+    &-wrapper {
+      height: 100%;
+      padding: 0;
+      input {
+        height: 100%;
+        padding: 0;
+        border: none;
+      }
+      .ant-btn {
+        border: none !important;
+        > div {
+          display: none !important;
+        }
+        .anticon {
+          font-size: 20px !important;
+        }
+        &:active {
+          color: var(--primary) !important;
+        }
+        &:hover {
+          color: var(--primary) !important;
+        }
+        &:focus-visible {
+          outline: none !important;
+        }
+      }
+    }
+  }
+}
+.ant-input-textarea-affix-wrapper {
+  .ant-input {
+    @include font(16px !important, var(--text-ac) !important, null, var(--fw-medium));
+    // &::placeholder {
+    // }
+  }
+}
+.search-set {
+  width: 860px;
+  border: solid 4px transparent;
+  border-radius: 24px;
+  background-image: linear-gradient(white, white), linear-gradient(to right, var(--primary), var(--border-c4), var(--border-51));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  .inp-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 0 !important;
+    .ant-input {
+      width: 90%;
+      height: 85px;
+      margin-right: auto;
+      padding: 25px 30px;
+      background: var(--white);
+      border-radius: 24px;
+      @include font(22px !important, var(--text-5a), null, var(--fw-bold));
+      &::placeholder {
+        @include font(22px !important, var(--text-5a), null, var(--fw-bold));
+      }
+      &:focus-within {
+        box-shadow: none;
+      }
+    }
+    .ic-search {
+      @include center("self", null, 20px, null, null);
+    }
+  }
+  &.vio {
+    background: var(--bg-8e);
+  }
+}

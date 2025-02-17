@@ -1,0 +1,195 @@
+// 일반 탭
+.tab {
+  .ant-tabs {
+    &-nav-wrap {
+      height: auto;
+    }
+    &-nav-list {
+      padding: 0 !important;
+      background: none !important;
+    }
+  }
+  &.ant-tabs {
+    .ant-tabs {
+      &-nav-list {
+        .ant-tabs {
+          &-tab {
+            padding: 0 !important;
+            &::before {
+              display: inline-flex;
+              content: "";
+              width: 1px;
+              height: 16px;
+              margin: 0 16px;
+              background: var(--border-e0);
+            }
+            &:first-child {
+              &::before {
+                display: none;
+              }
+            }
+            .ant-tabs-tab-btn {
+              padding-bottom: 3px;
+              @include font(18px, var(--text-a), null, var(--fw-bold));
+            }
+          }
+          &-tab-active {
+            .ant-tabs-tab-btn {
+              border-bottom: 2px solid var(--primary);
+              @include font(18px, var(--primary), null, var(--fw-bold));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// 아이콘 탭
+.icon-tab {
+  &.ant-tabs {
+    .ant-tabs {
+      &-nav {
+        margin: 0 !important;
+        &::before {
+          display: none;
+        }
+      }
+      &-ink-bar {
+        display: none;
+      }
+      &-tab-btn {
+        display: flex;
+        align-items: center;
+        padding: 0 20px !important;
+        .ant-tabs-tab-icon {
+          margin-inline-end: 10px !important;
+          .ui-icons {
+            width: 24px;
+            height: 24px;
+          }
+        }
+        span {
+          @include font(16px, var(--text-24), null, var(--fw-extra));
+        }
+      }
+      &-tab-active {
+        background: var(--primary) !important;
+        border-radius: 50px;
+        .ant-tabs-tab-btn {
+          span {
+            @include font(16px, var(--white), null, var(--fw-extra));
+          }
+        }
+      }
+    }
+    .ant-tabs-tab + .ant-tabs-tab {
+      margin: 0 0 0 20px !important;
+    }
+  }
+  // 스위치 형태
+  &.switch {
+    .ant-tabs {
+      &-nav-wrap {
+        justify-content: center;
+      }
+      &-nav-list {
+        padding: 5px;
+        background: var(--tab-bg);
+        border-radius: 50px;
+      }
+      &-tab {
+        margin: 0 !important;
+        padding: 12px 24px !important;
+        .ant-tabs-tab-btn {
+          .ant-tabs-tab-icon {
+            margin-inline-end: 8px !important;
+            .ui-icons {
+              width: 28px;
+              height: 28px;
+            }
+          }
+          span {
+            @include font(24px, var(--text-57), null, var(--fw-bold));
+          }
+        }
+      }
+      &-tab-btn {
+        padding: 0 !important;
+      }
+      &-tab-active {
+        background: var(--white) !important;
+        .ant-tabs-tab-btn {
+          span {
+            @include font(24px, var(--primary) !important, null, var(--fw-bold));
+          }
+        }
+      }
+    }
+    &.ant-tabs {
+      .ant-tabs-tab + .ant-tabs-tab {
+        margin: 0 !important;
+      }
+    }
+  }
+}
+
+// HeaderGnb
+.tab-list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  li {
+    height: 44px;
+    padding: 0 20px;
+    a {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      height: 100%;
+      .icon {
+        .ui-icons {
+          width: 24px;
+          height: 24px;
+        }
+      }
+      .txt {
+        @include font(16px, var(--text-24), null, var(--fw-extra));
+      }
+    }
+    &.active {
+      background: var(--primary);
+      border-radius: 50px;
+      .txt {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+.txt-tab-list {
+  display: flex;
+  .tab {
+    display: flex;
+    align-items: center;
+    & > .txt {
+      @include font(16px, var(--text-a), null, var(--fw-medium));
+      cursor: pointer;
+    }
+    &.active {
+      & > .txt {
+        color: var(--primary);
+        box-shadow: inset 0 -2px 0 var(--primary);
+      }
+    }
+    & + .tab {
+      &::before {
+        content: "";
+        width: 1px;
+        height: 12px;
+        margin: 0 15px;
+        background: var(--border-e0);
+      }
+    }
+  }
+}

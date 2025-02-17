@@ -1,0 +1,92 @@
+.table-wrap {
+  border-radius: 8px !important;
+  &.scrollbar {
+    overflow: hidden;
+    overflow-y: auto;
+  }
+  .ant-table {
+    &-thead {
+      z-index: 100;
+      position: sticky;
+      top: 0;
+      background: var(--border-f6) !important;
+      .ant-table-cell {
+        height: 40px !important;
+        padding: 10px 20px !important;
+        border-bottom: 1px solid var(--border-e0) !important;
+        @include font(16px !important, var(--text-3c) !important, null, var(--fw-bold) !important);
+        text-align: left !important;
+        &::before {
+          display: none !important;
+        }
+        .ant-table-column-title {
+          font-weight: var(--fw-bold);
+        }
+      }
+    }
+    &-tbody {
+      tr {
+        &:nth-child(2n + 1) {
+          .ant-table-cell {
+            background: var(--bg-fa) !important;
+          }
+        }
+        &:nth-child(2n) {
+          .ant-table-cell {
+            background: var(--border-f6) !important;
+          }
+        }
+        &:hover {
+          .ant-table-cell {
+            background: var(--portlet-act) !important;
+          }
+        }
+        td {
+          border: none !important;
+        }
+      }
+      .ant-table-cell {
+        position: relative !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        max-width: 200px !important;
+        height: 40px !important;
+        padding: 0 20px !important;
+        @include font(16px !important, var(--text-57) !important, null, var(--fw-medium) !important);
+        > a {
+          color: var(--primary) !important;
+          text-decoration: underline;
+        }
+        .new {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 18px;
+          margin-left: 5px;
+          background: var(--badge-grn);
+          border-radius: 50px;
+          border: 1px solid var(--badge-border-grn);
+          @include font(13px, var(--white), null, var(--fw-medium));
+          font-style: italic;
+        }
+        .btn-set {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+    }
+  }
+}
+.table-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  &.end {
+    justify-content: flex-end;
+  }
+}

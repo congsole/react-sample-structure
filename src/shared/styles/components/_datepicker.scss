@@ -1,0 +1,26 @@
+.ant-picker {
+  height: 40px;
+  border: 1px solid var(--border-e0) !important;
+  &-input {
+    input {
+      @include font(16px !important, var(--text-3c) !important, null, var(--fw-medium));
+      &::placeholder {
+        @include font(16px !important, var(--text-ac) !important, null, var(--fw-regular));
+      }
+    }
+  }
+  &:focus {
+    box-shadow: none !important;
+  }
+  &:focus-within {
+    box-shadow: none !important;
+  }
+  &:hover {
+    border-color: var(--primary) !important;
+  }
+}
+.datepicker-set {
+  .ant-picker {
+    margin-right: 16px;
+  }
+}

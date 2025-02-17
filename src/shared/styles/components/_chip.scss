@@ -1,0 +1,91 @@
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 24px;
+  padding: 2px 8px;
+  background: var(--primary);
+  border-radius: 8px;
+  @include font(14px, var(--white), null, var(--fw-bold));
+  &.sm {
+    height: 18px;
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+  &.md {
+    height: 24px;
+    padding: 4px 16px;
+  }
+  &.grn {
+    background: var(--chip-grn);
+  }
+  &.ylw {
+    background: var(--chip-ylw);
+  }
+  &.vio {
+    background: var(--chip-vio);
+  }
+  &.gry {
+    background: var(--chip-gry);
+  }
+  &.black {
+    background: var(--bg-1b);
+  }
+  &.wait {
+    color: var(--text-ff);
+    border: 1px solid var(--text-ff);
+    background: var(--bg-ff9);
+  }
+  &.success {
+    color: var(--bg-0d);
+    border: 1px solid var(--bg-0d);
+    background: var(--bg-0da);
+  }
+  &.return {
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+    background: var(--bg-ff2);
+  }
+  &.border {
+    background: var(--chip-bg);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    &.red {
+      background: var(--chip-border-red);
+      border: 1px solid var(--chip-red);
+      color: var(--chip-red);
+    }
+    &.white {
+      background: var(--white);
+      border: 1px solid var(--border-e0);
+      color: var(--text-57);
+    }
+  }
+  &.inline {
+    display: inline-flex;
+  }
+}
+.chip-set {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+// 해시태그
+.hash-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 5px 16px;
+  background: var(--white);
+  border-radius: 24px;
+  border: 1px solid var(--border-0);
+  @include font(13px, var(--text-57), null, var(--fw-medium));
+  span {
+    margin-left: 3px;
+    @include font(13px, var(--text-57), null, var(--fw-medium));
+  }
+}

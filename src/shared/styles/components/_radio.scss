@@ -1,0 +1,31 @@
+.ant-radio {
+  border-radius: 4px;
+  border-color: var(--border-e0);
+  &-inner {
+    width: 20px !important;
+    height: 20px !important;
+    background: transparent !important;
+    &::after {
+      margin-block-start: -8px !important;
+      margin-inline-start: -8px !important;
+      transform: scale(0.6) !important;
+    }
+  }
+  &-wrapper {
+    @include font(14px, var(--text-57), null, var(--fw-medium));
+    &:hover {
+      .ant-radio-inner {
+        border-color: var(--primary) !important;
+      }
+    }
+  }
+  &-checked {
+    .ant-radio-inner {
+      background: var(--white) !important;
+      border-color: var(--primary) !important;
+      &::after {
+        background: var(--primary) !important;
+      }
+    }
+  }
+}

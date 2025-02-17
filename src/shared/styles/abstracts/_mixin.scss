@@ -1,0 +1,40 @@
+// position
+@mixin center($position, $T:null, $R:null, $B:null, $L:null) {
+	position: absolute;
+	@if $position == 'vertical' {
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+	@else if $position == 'horizontal' {
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
+	@else if $position == 'both' {
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+	@else if $position == 'def' {
+		top: 0;
+		left: 0;
+	}
+	@else if $position == 'self' {
+		top: $T;
+		right: $R;
+		bottom: $B;
+		left: $L;
+	}
+}
+
+// font
+@mixin font($size, $color: false, $lineHeight: normal, $fwWeight: var(--fw-regular)) {
+	font-size: $size;
+	line-height: $lineHeight;
+	font-weight: $fwWeight;
+	@if $color != false {
+		color: $color;
+	}
+}

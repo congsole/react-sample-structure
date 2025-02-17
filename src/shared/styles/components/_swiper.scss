@@ -1,0 +1,34 @@
+.swiper {
+  margin: 0 90px !important;
+  padding-right: 2px !important;
+  &-button {
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 1px;
+      height: 230px;
+      background: var(--border-f8);
+    }
+    &-prev {
+      left: 0;
+      &::before {
+        top: -80px;
+        left: 73px;
+      }
+    }
+    &-next {
+      right: 0;
+      &::before {
+        top: -80px;
+        right: 73px;
+      }
+    }
+    &-disabled {
+      cursor: default;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.ant-popover {
+  max-width: 350px !important;
+  background: var(--primary);
+  border-radius: 8px !important;
+  .ant-popover {
+    &-arrow {
+      &::after {
+        background: var(--primary) !important;
+      }
+    }
+    &-content {
+      padding: 0;
+      .ant-popover-inner {
+        background: var(--primary) !important;
+        border-radius: 8px;
+        @include font(12px, var(--white), null, var(--fw-regular));
+        box-shadow: none;
+      }
+      .ant-popover-title {
+        margin-bottom: 0;
+        @include font(12px, var(--white), null, var(--fw-regular));
+      }
+    }
+  }
+}
