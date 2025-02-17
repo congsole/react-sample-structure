@@ -1,0 +1,14 @@
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ICON/SEARCH ">
+<g clip-path="url(#clip0_8455_14085)">
+<rect id="Rectangle 12331" width="44" height="44" rx="22" fill="#DBDBE2"/>
+<path id="(LINE) -" d="M15 21C14.4477 21 14 21.4477 14 22C14 22.5523 14.4477 23 15 23V21ZM29 21H15V23H29V21Z" fill="white"/>
+<path id="Line 10" d="M24 28L30 22L24 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_8455_14085">
+<rect width="44" height="44" rx="8" fill="white"/>
+</clipPath>
+</defs>
+</svg>
