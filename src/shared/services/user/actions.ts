@@ -9,6 +9,7 @@ const getUserSample = {
     teamNm: "임시",
     usrNm: "손해솔",
     menuList: [
+        "/aimc/1",
         "/aimc",
         "/aimc/report/3",
         "/aimc/report/4",
