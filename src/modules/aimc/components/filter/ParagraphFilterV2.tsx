@@ -1,23 +1,19 @@
 import React from "react";
 
 import MultiSelectFilter from "modules/aimc/components/filter/MultiSelectFilter";
-
-interface Filter {
-  typCd: string;
-  description: string | undefined;
-}
+import { Filter } from "modules/aimc/types/report";
 
 interface IProps {
   serviceId: number;
   title?: string;
-  prgrpFilters: Filter[];
+  prgrpFilters: Filter[] | undefined;
 }
 
-const multiSelectCode = ["CITY", "CUST", "PRDL"];
+const multiSelectCode = ["CUST", "PRDL"];
 
-const generateFilter = (typCd: string) => {
+const generateFilter = (typCd: string, parentCd = null) => {
   if (multiSelectCode.includes(typCd)) {
-    return <MultiSelectFilter typCd={typCd} key={typCd} />;
+    return <MultiSelectFilter typCd={typCd} key={`${typCd}-${parentCd}`} />;
   }
 };
 
@@ -34,8 +30,8 @@ const ParagraphFilterV2: React.FC<IProps> = ({
           {/* 단락 제목 - 3사경쟁(7) 일때는 "기준" */}
           <div className="tit">{serviceId === 7 ? "기준" : title}</div>
           <div className="filter-set">
-            {prgrpFilters.map((filter) =>
-              generateFilter(filter.typCd),
+            {prgrpFilters!.map((filter) =>
+              generateFilter(filter.typeCd),
             )}
           </div>
         </div>

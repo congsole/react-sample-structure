@@ -1,39 +1,14 @@
-"use client";
-
-import { saveParagraphLayout } from "@/app/_service/aimc/report/actions";
-import useReportStore from "@/app/_store/reportStore";
+import React, { useEffect, useState } from "react";
 import {
-  Filter,
-  PortletData,
-  PortletLayout,
-  PortletType,
-  ReportParagraphType,
-} from "@/app/_types/aimc/report";
-import useConfirmStore from "@/app/aimc/_components/confirm/useConfirmStore";
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+  Menu, Page, PortletData, PortletLayout,
+} from "modules/aimc/types/report";
+import { useConfirm } from "shared/hooks/alert/useConfirm";
+import { useAlert } from "shared/hooks/alert/useAlert";
 import RGL, { Layout, WidthProvider } from "react-grid-layout";
-import PowerBIReportVisualCard from "./portlet/PowerBIReportVisualCard";
-import PowerBISummaryMulti from "./portlet/PowerBISummaryMulti";
-import PowerBISummaryMultiChange from "./portlet/PowerBISummaryMultiChange";
-import ReportSummary from "./portlet/ReportSummary";
-import PowerBIReportSummaryRightCard from "./portlet/PowerBIReportSummaryRightCard";
-import PowerBIEmbed from "./portlet/PowerBIEmbed";
-import PowerBIMultiReportCard from "./portlet/PowerBIMultiReportCard";
+import PowerBIReportCard from "./portlet/PowerBIReportCard";
 
 const GridLayout = WidthProvider(RGL);
-const PowerBIReportCard = dynamic(() => import("./portlet/PowerBIReportCard"), {
-  ssr: false,
-});
-const PowerBISummary = dynamic(() => import("./portlet/PowerBISummary"), {
-  ssr: false,
-});
-const PowerBIReportSummaryVisualCard = dynamic(
-  () => import("./portlet/PowerBIReportSummaryVisualCard"),
-  {
-    ssr: false,
-  },
-);
+
 // 기준 사이즈
 const PORTLET_WIDTH = parseInt(process.env.NEXT_PUBLIC_PORTLET_WIDTH!, 10);
 const PORTLET_HEIGHT = parseInt(process.env.NEXT_PUBLIC_PORTLET_HEIGHT!, 10);
@@ -41,26 +16,23 @@ const PORTLET_MARGIN = parseInt(process.env.NEXT_PUBLIC_PORTLET_MARGIN!, 10);
 
 type ReportParagraphProps = {
   serviceId: number;
-  data: ReportParagraphType;
-  menuFilters: Filter[];
+  pageNum: number;
+  menu: Menu;
+  page: Page;
 };
 
 export default function ReportParagraph({
-  serviceId,
-  data,
-  menuFilters,
+                                          serviceId,
+                                          pageNum,
+                                          menu,
+                                          page,
 }: ReportParagraphProps) {
-  const { userParagraphId, isFixed, prgrpFilters, pageNum } = data;
-  const items = data.layouts;
-  const { confirm } = useConfirmStore();
+  const items = page.portlets;
+  const { showConfirm } = useConfirm();
+  const { showAlert } = useAlert();
   const [portletItems, setPortletItems] = useState<PortletData[]>([]);
   const [layout, setLayout] = useState<Layout[]>([]);
   const [isDragging, setIsDragging] = useState(false);
-  const { setReportPageData } = useReportStore();
-  const { reportPageData } = useReportStore();
-  useEffect(() => {
-    setReportPageData({ serviceId, isFixed, pageNum });
-  }, [data]);
 
   useEffect(() => {
     const layouts = items.map((portlet: any) => {
@@ -94,12 +66,12 @@ export default function ReportParagraph({
 
     if (!hasDroppingElem) {
       setLayout(layout);
-      const paragraphLayouts: PortletLayout[] = layout.map(({ x, y, i }) => ({
-        x,
-        y,
-        portletId: Number(i),
-      }));
-      await saveParagraphLayout(serviceId, userParagraphId, paragraphLayouts);
+      // const paragraphLayouts: PortletLayout[] = layout.map(({ x, y, i }) => ({
+      //   x,
+      //   y,
+      //   portletId: Number(i),
+      // }));
+      // await saveParagraphLayout(serviceId, userParagraphId, paragraphLayouts);
     }
   };
 
@@ -116,7 +88,9 @@ export default function ReportParagraph({
     const dataStr = dragEvent.dataTransfer.getData("portletData");
     const portletData = JSON.parse(dataStr);
     if (portletItems.some((data) => data.portletId === portletData.portletId)) {
-      await confirm("해당 단락에 동일한 포틀릿이 있습니다.", false, true);
+      showAlert({
+        message: "해당 단락에 동일한 포틀릿이 있습니다.",
+      });
       return;
     }
 
@@ -124,7 +98,7 @@ export default function ReportParagraph({
     setLayout((prev) => [
       ...prev,
       {
-        i: portletData.portletId + "",
+        i: portletData.portletId.toString(),
         x: layoutItem.x,
         y: layoutItem.y,
         w: portletData.width,
@@ -134,136 +108,40 @@ export default function ReportParagraph({
       },
     ]);
   };
-
   const handlePortletDelete = async (portletId: number) => {
-    const isConfirmed = await confirm("해당 포틀릿을 삭제 하시겠습니까?", true);
-    if (!isConfirmed) return;
+    showConfirm({
+      message: "해당 포틀릿을 삭제 하시겠습니까?",
+      onOk: async () => {
+        setPortletItems((prev) => [
+          ...prev.filter((data) => data.portletId !== portletId.toString()),
+        ]);
 
-    setPortletItems((prev) => [
-      ...prev.filter((data) => data.portletId !== portletId),
-    ]);
-
-    setLayout((prev) => [
-      ...prev.filter((data) => data.i !== portletId.toString()),
-    ]);
+        setLayout((prev) => [
+          ...prev.filter((data) => data.i !== portletId.toString()),
+        ]);
+      }
+    });
   };
 
   function generateReportCard(layoutId: string) {
     const existFilterRemoveAll = serviceId !== 7; //3사경쟁(7) 일때는 기존 필터 유지
     // const fullScreen = serviceId === 7; //3사경쟁(7) 일때는 전체 화면
-
     const data = portletItems.find(
-      (data) => data.portletId === Number(layoutId),
+      (data) => data.portletId === layoutId,
     );
     if (!data) return <></>;
-
     let reportCard;
-    if (data.formCd === PortletType.PowerBI && data.type === "NR") {
-      if (serviceId === 8 || serviceId === 27) {
-        reportCard = (
-          <PowerBIReportVisualCard
-            onDelete={handlePortletDelete}
-            data={data}
-            globalFilterSetting={{ menu: menuFilters, paragraph: prgrpFilters }}
-            existFilterRemoveAll={existFilterRemoveAll}
-            isDragging={isDragging}
-            serviceId={serviceId}
-          />
-        );
-      } else {
+
         reportCard = (
           <PowerBIReportCard
             onDelete={handlePortletDelete}
             data={data}
-            globalFilterSetting={[...menuFilters, ...prgrpFilters]}
+            globalFilterSetting={[...menu.pageFilters, ...menu.prgrpFilters]}
             existFilterRemoveAll={existFilterRemoveAll}
             serviceId={serviceId}
+            isFixed={page.isFixed}
           />
         );
-      }
-    } else if (data.formCd === PortletType.PowerBI && data.type === "ST") {
-      if (serviceId === 26 || serviceId === 7) {
-        reportCard = (
-          <PowerBIEmbed
-            pages={data.powerBiList}
-            filters={[...menuFilters, ...prgrpFilters]}
-          />
-        );
-      } else {
-        reportCard = (
-          <PowerBIMultiReportCard
-            onDelete={handlePortletDelete}
-            data={data}
-            globalFilterSetting={[...menuFilters, ...prgrpFilters]}
-            existFilterRemoveAll={existFilterRemoveAll}
-            serviceId={serviceId}
-          />
-        );
-      }
-    } else if (data.formCd === PortletType.PowerBISummary) {
-      if (serviceId === 8) {
-        reportCard = (
-          <PowerBIReportSummaryVisualCard
-            onDelete={handlePortletDelete}
-            data={data}
-            globalFilterSetting={{
-              menu: menuFilters,
-              paragraph: prgrpFilters,
-            }}
-            existFilterRemoveAll={existFilterRemoveAll}
-            isDragging={isDragging}
-            serviceId={serviceId}
-          />
-        );
-      } else {
-        if (serviceId === 3 && data.type === "ST") {
-          reportCard = (
-            <PowerBISummaryMultiChange
-              onDelete={handlePortletDelete}
-              data={data}
-              globalFilterSetting={[...menuFilters, ...prgrpFilters]}
-              serviceId={serviceId}
-            />
-          );
-        } else if (serviceId != 3 && data.type === "ST") {
-          reportCard = (
-            <PowerBISummaryMulti
-              onDelete={handlePortletDelete}
-              data={data}
-              globalFilterSetting={[...menuFilters, ...prgrpFilters]}
-              serviceId={serviceId}
-            />
-          );
-        } else {
-          reportCard = (
-            <PowerBISummary
-              onDelete={handlePortletDelete}
-              data={data}
-              globalFilterSetting={[...menuFilters, ...prgrpFilters]}
-              serviceId={serviceId}
-            />
-          );
-        }
-      }
-    } else if (data.formCd === PortletType.ReportSummary) {
-      reportCard = (
-        <ReportSummary
-          portletData={data}
-          globalFilterSetting={[...menuFilters, ...prgrpFilters]}
-        />
-      );
-    } else if (data.formCd === PortletType.PowerBISummaryRight) {
-      reportCard = (
-        <PowerBIReportSummaryRightCard
-          data={data}
-          globalFilterSetting={[...menuFilters, ...prgrpFilters]}
-          layout={layout}
-          serviceId={serviceId}
-          page={reportPageData?.pageNum ?? 1}
-        />
-      );
-    }
-
     return (
       <div key={layoutId} className="dnd-movable-item">
         {reportCard}
@@ -303,9 +181,9 @@ export default function ReportParagraph({
         allowOverlap={false}
         compactType="vertical"
         isResizable={false}
-        isDraggable={!isFixed}
+        isDraggable={!page.isFixed}
         onDrop={handlerDrop}
-        isDroppable={!reportPageData?.isFixed}
+        isDroppable={!page?.isFixed}
         onDragStart={handleDragStart}
         onDragStop={handleDragStop}
       >

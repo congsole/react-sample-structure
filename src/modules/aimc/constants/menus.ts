@@ -16,15 +16,51 @@ export const AIMC_MENUS = [
         serviceId: 1,
         title: "판매실적 분석",
         pages: [
-            { pageNum: 1, title: "1페이지입니다." },
-            { pageNum: 2, title: "2페이지입니다." },
-            { pageNum: 3, title: "3페이지입니다." },
+            {
+                pageNum: 1,
+                title: "무선 판매",
+                isFixed: false,
+                portlets: [
+                    {
+                        portletId: '1',
+                        title: '판매량 및 유형별 비중',
+                        description: '',
+                        x: 0,
+                        y: 0,
+                        width: 8,
+                        height: 4,
+                        portletFilters: [],
+                    },
+                    {
+                        portletId: '2',
+                        title: '판매량 주요 변동 요인',
+                        description: '',
+                        x: 6,
+                        y: 0,
+                        width: 2,
+                        height: 4,
+                        portletFilters: [],
+                    },
+                    {
+                        portletId: '3',
+                        title: '지역/일별/단말별 판매량ㅋㅋㅋㅋ',
+                        description: '',
+                        x: 0,
+                        y: 2,
+                        width: 6,
+                        height: 2,
+                        portletFilters: [],
+                    }
+                ],
+            }
+            ],
+        pageFilters: [
+            { typeCd: "STAT", description: "도" },
         ],
-        filters: [
+        prgrpFilters: [
             { typeCd: "CITY", description: "시/군/구" },
             { typeCd: "CUST", description: "고객 분류" },
             { typeCd: "PRDL", description: "제품 대분류" },
-            { typeCd: "PRDS", description: "제품 소분류" },
         ]
     }
 ];

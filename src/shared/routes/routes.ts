@@ -16,3 +16,8 @@ export function useRouter() {
         pathname: usePathname(),
     };
 }
+
+export function useSearchParams() {
+    const { search } = useLocation();
+    return new URLSearchParams(search);
+}
