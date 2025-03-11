@@ -50,10 +50,9 @@ export default function PowerBIReportCard({
   // }, [data.portletId, updatePortletState]);
 
   return (
-    <FullScreen handle={handleFullScreen}>
       <div
         className="card"
-        style={{ height: "100%", backgroundColor: "white" }}
+        style={{ height: "100%", backgroundColor: "white", overflow: "hidden" }}
       >
         <div className="view-top">
           <div className="tit-set">
@@ -82,9 +81,9 @@ export default function PowerBIReportCard({
         <div
           className={cn("view-content", {})}
         >
-          <div><h1>portlet area</h1></div>
+          <div className="report-container">
+          </div>
         </div>
       </div>
-    </FullScreen>
   );
 }

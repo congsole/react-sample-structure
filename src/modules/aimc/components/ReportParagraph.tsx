@@ -10,9 +10,9 @@ import PowerBIReportCard from "./portlet/PowerBIReportCard";
 const GridLayout = WidthProvider(RGL);
 
 // 기준 사이즈
-const PORTLET_WIDTH = parseInt(process.env.NEXT_PUBLIC_PORTLET_WIDTH!, 10);
-const PORTLET_HEIGHT = parseInt(process.env.NEXT_PUBLIC_PORTLET_HEIGHT!, 10);
-const PORTLET_MARGIN = parseInt(process.env.NEXT_PUBLIC_PORTLET_MARGIN!, 10);
+const PORTLET_WIDTH = 182;
+const PORTLET_HEIGHT = 204;
+const PORTLET_MARGIN = 10;
 
 type ReportParagraphProps = {
   serviceId: number;
@@ -49,14 +49,17 @@ export default function ReportParagraph({
 
     setPortletItems(items);
     setLayout(layouts);
+    console.log(layouts);
   }, [items]);
 
   const handleDragStart = () => {
     setIsDragging(true);
+    console.log("드래그 스타트");
   };
 
   const handleDragStop = () => {
     setIsDragging(false);
+    console.log("드래그 스톱");
   };
 
   const onLayoutChange = async (layout: any[]) => {
@@ -73,6 +76,8 @@ export default function ReportParagraph({
       // }));
       // await saveParagraphLayout(serviceId, userParagraphId, paragraphLayouts);
     }
+    console.log("레이아웃 체인지");
+    console.log(layout);
   };
 
   const handlerDrop = async (
@@ -107,7 +112,9 @@ export default function ReportParagraph({
         minH: portletData.height,
       },
     ]);
+    console.log("핸들드롭");
   };
+
   const handlePortletDelete = async (portletId: number) => {
     showConfirm({
       message: "해당 포틀릿을 삭제 하시겠습니까?",
