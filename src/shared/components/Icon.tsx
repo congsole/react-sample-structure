@@ -296,2002 +296,2002 @@ interface Props {
 const IconLogo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLogo} alt="icon" />
+      <Image preview={false} src={iconLogo} alt="icon" />
     </div>
   );
 };
 const IconComm = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconComm} alt="icon" />
+      <Image preview={false} src={iconComm} alt="icon" />
     </div>
   );
 };
 const IconMypage = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMypage} alt="icon" />
+      <Image preview={false} src={iconMypage} alt="icon" />
     </div>
   );
 };
 const IconLogout = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLogout} alt="icon" />
+      <Image preview={false} src={iconLogout} alt="icon" />
     </div>
   );
 };
 const IconHeaderInfo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconHeaderInfo} alt="icon" />
+      <Image preview={false} src={iconHeaderInfo} alt="icon" />
     </div>
   );
 };
 const IconHeaderQna = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconHeaderQna} alt="icon" />
+      <Image preview={false} src={iconHeaderQna} alt="icon" />
     </div>
   );
 };
 const IconHeaderGuide = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconHeaderGuide} alt="icon" />
+      <Image preview={false} src={iconHeaderGuide} alt="icon" />
     </div>
   );
 };
 const IconGnbConsult = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbConsult} alt="icon" />
+      <Image preview={false} src={iconGnbConsult} alt="icon" />
     </div>
   );
 };
 const IconGnbConsultAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbConsultAct} alt="icon" />
+      <Image preview={false} src={iconGnbConsultAct} alt="icon" />
     </div>
   );
 };
 const IconGnbMaster = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbMaster} alt="icon" />
+      <Image preview={false} src={iconGnbMaster} alt="icon" />
     </div>
   );
 };
 const IconGnbMasterAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbMasterAct} alt="icon" />
+      <Image preview={false} src={iconGnbMasterAct} alt="icon" />
     </div>
   );
 };
 const IconGnbCreator = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbCreator} alt="icon" />
+      <Image preview={false} src={iconGnbCreator} alt="icon" />
     </div>
   );
 };
 const IconGnbCreatorAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbCreatorAct} alt="icon" />
+      <Image preview={false} src={iconGnbCreatorAct} alt="icon" />
     </div>
   );
 };
 const IconPdf = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPdf} alt="icon" />
+      <Image preview={false} src={iconPdf} alt="icon" />
     </div>
   );
 };
 const IconSearch = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSearch} alt="icon" />
+      <Image preview={false} src={iconSearch} alt="icon" />
     </div>
   );
 };
 const IconMenu1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu1} alt="icon" />
+      <Image preview={false} src={iconMenu1} alt="icon" />
     </div>
   );
 };
 const IconMenu2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu2} alt="icon" />
+      <Image preview={false} src={iconMenu2} alt="icon" />
     </div>
   );
 };
 const IconMenu3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu3} alt="icon" />
+      <Image preview={false} src={iconMenu3} alt="icon" />
     </div>
   );
 };
 const IconMenu4 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu4} alt="icon" />
+      <Image preview={false} src={iconMenu4} alt="icon" />
     </div>
   );
 };
 const IconMenu5 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu5} alt="icon" />
+      <Image preview={false} src={iconMenu5} alt="icon" />
     </div>
   );
 };
 const IconMenu1_1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu1_1} alt="icon" />
+      <Image preview={false} src={iconMenu1_1} alt="icon" />
     </div>
   );
 };
 const IconMenu1_2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu1_2} alt="icon" />
+      <Image preview={false} src={iconMenu1_2} alt="icon" />
     </div>
   );
 };
 const IconMenu1_3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu1_3} alt="icon" />
+      <Image preview={false} src={iconMenu1_3} alt="icon" />
     </div>
   );
 };
 const IconMenu1_4 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu1_4} alt="icon" />
+      <Image preview={false} src={iconMenu1_4} alt="icon" />
     </div>
   );
 };
 const IconMenu1_5 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu1_5} alt="icon" />
+      <Image preview={false} src={iconMenu1_5} alt="icon" />
     </div>
   );
 };
 const IconMenu2_1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu2_1} alt="icon" />
+      <Image preview={false} src={iconMenu2_1} alt="icon" />
     </div>
   );
 };
 const IconMenu2_2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu2_2} alt="icon" />
+      <Image preview={false} src={iconMenu2_2} alt="icon" />
     </div>
   );
 };
 const IconMenu3_1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu3_1} alt="icon" />
+      <Image preview={false} src={iconMenu3_1} alt="icon" />
     </div>
   );
 };
 const IconMenu3_2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu3_2} alt="icon" />
+      <Image preview={false} src={iconMenu3_2} alt="icon" />
     </div>
   );
 };
 const IconMenu3_3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu3_3} alt="icon" />
+      <Image preview={false} src={iconMenu3_3} alt="icon" />
     </div>
   );
 };
 const IconMenu3_4 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenu3_4} alt="icon" />
+      <Image preview={false} src={iconMenu3_4} alt="icon" />
     </div>
   );
 };
 const IconMore = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMore} alt="icon" />
+      <Image preview={false} src={iconMore} alt="icon" />
     </div>
   );
 };
 const IconText = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconText} alt="icon" />
+      <Image preview={false} src={iconText} alt="icon" />
     </div>
   );
 };
 const IconDownload = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDownload} alt="icon" />
+      <Image preview={false} src={iconDownload} alt="icon" />
     </div>
   );
 };
 const IconDownloadW = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDownloadW} alt="icon" />
+      <Image preview={false} src={iconDownloadW} alt="icon" />
     </div>
   );
 };
 const IconDownloadG = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDownloadG} alt="icon" />
+      <Image preview={false} src={iconDownloadG} alt="icon" />
     </div>
   );
 };
 const IconSave = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSave} alt="icon" />
+      <Image preview={false} src={iconSave} alt="icon" />
     </div>
   );
 };
 const IconDelete2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDelete2} alt="icon" />
+      <Image preview={false} src={iconDelete2} alt="icon" />
     </div>
   );
 };
 const IconUp = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconUp} alt="icon" />
+      <Image preview={false} src={iconUp} alt="icon" />
     </div>
   );
 };
 const IconDown = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDown} alt="icon" />
+      <Image preview={false} src={iconDown} alt="icon" />
     </div>
   );
 };
 const IconQue = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQue} alt="icon" />
+      <Image preview={false} src={iconQue} alt="icon" />
     </div>
   );
 };
 const IconQueW = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQueW} alt="icon" />
+      <Image preview={false} src={iconQueW} alt="icon" />
     </div>
   );
 };
 const IconFlagship = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconFlagship} alt="icon" />
+      <Image preview={false} src={iconFlagship} alt="icon" />
     </div>
   );
 };
 const IconModify = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconModify} alt="icon" />
+      <Image preview={false} src={iconModify} alt="icon" />
     </div>
   );
 };
 const IconDelete = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDelete} alt="icon" />
+      <Image preview={false} src={iconDelete} alt="icon" />
     </div>
   );
 };
 const IconSlctDown = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSlctDown} alt="icon" />
+      <Image preview={false} src={iconSlctDown} alt="icon" />
     </div>
   );
 };
 const IconEdit = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconEdit} alt="icon" />
+      <Image preview={false} src={iconEdit} alt="icon" />
     </div>
   );
 };
 const IconDesc = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDesc} alt="icon" />
+      <Image preview={false} src={iconDesc} alt="icon" />
     </div>
   );
 };
 const IconCircleUp = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCircleUp} alt="icon" />
+      <Image preview={false} src={iconCircleUp} alt="icon" />
     </div>
   );
 };
 const IconCircleDown = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCircleDown} alt="icon" />
+      <Image preview={false} src={iconCircleDown} alt="icon" />
     </div>
   );
 };
 const IconLoading = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLoading} alt="icon" />
+      <Image preview={false} src={iconLoading} alt="icon" />
     </div>
   );
 };
 const IconLoading2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLoading2} alt="icon" />
+      <Image preview={false} src={iconLoading2} alt="icon" />
     </div>
   );
 };
 const IconMenuMinus = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenuMinus} alt="icon" />
+      <Image preview={false} src={iconMenuMinus} alt="icon" />
     </div>
   );
 };
 const IconStore = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconStore} alt="icon" />
+      <Image preview={false} src={iconStore} alt="icon" />
     </div>
   );
 };
 const IconStoreAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconStoreAct} alt="icon" />
+      <Image preview={false} src={iconStoreAct} alt="icon" />
     </div>
   );
 };
 const IconOffice = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconOffice} alt="icon" />
+      <Image preview={false} src={iconOffice} alt="icon" />
     </div>
   );
 };
 const IconOfficeAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconOfficeAct} alt="icon" />
+      <Image preview={false} src={iconOfficeAct} alt="icon" />
     </div>
   );
 };
 const IconPopPortlet = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPopPortlet} alt="icon" />
+      <Image preview={false} src={iconPopPortlet} alt="icon" />
     </div>
   );
 };
 const IconPopChat = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPopChat} alt="icon" />
+      <Image preview={false} src={iconPopChat} alt="icon" />
     </div>
   );
 };
 const IconLlm = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLlm} alt="icon" />
+      <Image preview={false} src={iconLlm} alt="icon" />
     </div>
   );
 };
 const IconMy = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMy} alt="icon" />
+      <Image preview={false} src={iconMy} alt="icon" />
     </div>
   );
 };
 const IconMyAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMyAct} alt="icon" />
+      <Image preview={false} src={iconMyAct} alt="icon" />
     </div>
   );
 };
 const IconGraph = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGraph} alt="icon" />
+      <Image preview={false} src={iconGraph} alt="icon" />
     </div>
   );
 };
 const IconGraphGry = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGraphGry} alt="icon" />
+      <Image preview={false} src={iconGraphGry} alt="icon" />
     </div>
   );
 };
 const IconClose = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconClose} alt="icon" />
+      <Image preview={false} src={iconClose} alt="icon" />
     </div>
   );
 };
 const IconSearchBtn = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSearchBtn} alt="icon" />
+      <Image preview={false} src={iconSearchBtn} alt="icon" />
     </div>
   );
 };
 const IconSearchBtnG = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSearchBtnG} alt="icon" />
+      <Image preview={false} src={iconSearchBtnG} alt="icon" />
     </div>
   );
 };
 const IconSearchStopBtn = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSearchStopBtn} alt="icon" />
+      <Image preview={false} src={iconSearchStopBtn} alt="icon" />
     </div>
   );
 };
 const IconProject = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconProject} alt="icon" />
+      <Image preview={false} src={iconProject} alt="icon" />
     </div>
   );
 };
 const IconProjectAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconProjectAct} alt="icon" />
+      <Image preview={false} src={iconProjectAct} alt="icon" />
     </div>
   );
 };
 const IconMsg = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMsg} alt="icon" />
+      <Image preview={false} src={iconMsg} alt="icon" />
     </div>
   );
 };
 const IconMsgAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMsgAct} alt="icon" />
+      <Image preview={false} src={iconMsgAct} alt="icon" />
     </div>
   );
 };
 const IconT = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconT} alt="icon" />
+      <Image preview={false} src={iconT} alt="icon" />
     </div>
   );
 };
 const IconTempCare = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempCare} alt="icon" />
+      <Image preview={false} src={iconTempCare} alt="icon" />
     </div>
   );
 };
 const IconTempSale = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempSale} alt="icon" />
+      <Image preview={false} src={iconTempSale} alt="icon" />
     </div>
   );
 };
 const IconTempNotice = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempNotice} alt="icon" />
+      <Image preview={false} src={iconTempNotice} alt="icon" />
     </div>
   );
 };
 const IconTempSurvey = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempSurvey} alt="icon" />
+      <Image preview={false} src={iconTempSurvey} alt="icon" />
     </div>
   );
 };
 const IconMoreArrow = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMoreArrow} alt="icon" />
+      <Image preview={false} src={iconMoreArrow} alt="icon" />
     </div>
   );
 };
 const IconMoreArrowB = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMoreArrowB} alt="icon" />
+      <Image preview={false} src={iconMoreArrowB} alt="icon" />
     </div>
   );
 };
 const IconAdd = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAdd} alt="icon" />
+      <Image preview={false} src={iconAdd} alt="icon" />
     </div>
   );
 };
 const IconAddWht = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAddWht} alt="icon" />
+      <Image preview={false} src={iconAddWht} alt="icon" />
     </div>
   );
 };
 const IconRocket = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconRocket} alt="icon" />
+      <Image preview={false} src={iconRocket} alt="icon" />
     </div>
   );
 };
 const IconHot = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconHot} alt="icon" />
+      <Image preview={false} src={iconHot} alt="icon" />
     </div>
   );
 };
 const IconPopGuide = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPopGuide} alt="icon" />
+      <Image preview={false} src={iconPopGuide} alt="icon" />
     </div>
   );
 };
 const IconPopInfo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPopInfo} alt="icon" />
+      <Image preview={false} src={iconPopInfo} alt="icon" />
     </div>
   );
 };
 const IconBest = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconBest} alt="icon" />
+      <Image preview={false} src={iconBest} alt="icon" />
     </div>
   );
 };
 const IconSliderPrev = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSliderPrev} alt="icon" />
+      <Image preview={false} src={iconSliderPrev} alt="icon" />
     </div>
   );
 };
 const IconSliderNext = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSliderNext} alt="icon" />
+      <Image preview={false} src={iconSliderNext} alt="icon" />
     </div>
   );
 };
 const IconDropMenu = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDropMenu} alt="icon" />
+      <Image preview={false} src={iconDropMenu} alt="icon" />
     </div>
   );
 };
 const IconMenuMaketing = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenuMaketing} alt="icon" />
+      <Image preview={false} src={iconMenuMaketing} alt="icon" />
     </div>
   );
 };
 const IconMenuMsg = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenuMsg} alt="icon" />
+      <Image preview={false} src={iconMenuMsg} alt="icon" />
     </div>
   );
 };
 const IconMenuProject = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenuProject} alt="icon" />
+      <Image preview={false} src={iconMenuProject} alt="icon" />
     </div>
   );
 };
 const IconMenuArchieve = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenuArchieve} alt="icon" />
+      <Image preview={false} src={iconMenuArchieve} alt="icon" />
     </div>
   );
 };
 const IconMenuGuide = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenuGuide} alt="icon" />
+      <Image preview={false} src={iconMenuGuide} alt="icon" />
     </div>
   );
 };
 const IconCalendar = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCalendar} alt="icon" />
+      <Image preview={false} src={iconCalendar} alt="icon" />
     </div>
   );
 };
 const IconTagDelete = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTagDelete} alt="icon" />
+      <Image preview={false} src={iconTagDelete} alt="icon" />
     </div>
   );
 };
 const IconInpSearch = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconInpSearch} alt="icon" />
+      <Image preview={false} src={iconInpSearch} alt="icon" />
     </div>
   );
 };
 const IconPlusBlu = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPlusBlu} alt="icon" />
+      <Image preview={false} src={iconPlusBlu} alt="icon" />
     </div>
   );
 };
 const IconChat = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconChat} alt="icon" />
+      <Image preview={false} src={iconChat} alt="icon" />
     </div>
   );
 };
 const IconMms = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMms} alt="icon" />
+      <Image preview={false} src={iconMms} alt="icon" />
     </div>
   );
 };
 const IconDate = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDate} alt="icon" />
+      <Image preview={false} src={iconDate} alt="icon" />
     </div>
   );
 };
 const IconCustomer = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCustomer} alt="icon" />
+      <Image preview={false} src={iconCustomer} alt="icon" />
     </div>
   );
 };
 const IconBanner = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconBanner} alt="icon" />
+      <Image preview={false} src={iconBanner} alt="icon" />
     </div>
   );
 };
 const IconMap = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMap} alt="icon" />
+      <Image preview={false} src={iconMap} alt="icon" />
     </div>
   );
 };
 const IconSurvey = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSurvey} alt="icon" />
+      <Image preview={false} src={iconSurvey} alt="icon" />
     </div>
   );
 };
 const IconRight = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconRight} alt="icon" />
+      <Image preview={false} src={iconRight} alt="icon" />
     </div>
   );
 };
 const IconRightBlk = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconRightBlk} alt="icon" />
+      <Image preview={false} src={iconRightBlk} alt="icon" />
     </div>
   );
 };
 const IconImage = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImage} alt="icon" />
+      <Image preview={false} src={iconImage} alt="icon" />
     </div>
   );
 };
 const IconVideo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconVideo} alt="icon" />
+      <Image preview={false} src={iconVideo} alt="icon" />
     </div>
   );
 };
 const IconAdobe = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAdobe} alt="icon" />
+      <Image preview={false} src={iconAdobe} alt="icon" />
     </div>
   );
 };
 const IconDiagonalR = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDiagonalR} alt="icon" />
+      <Image preview={false} src={iconDiagonalR} alt="icon" />
     </div>
   );
 };
 const IconImgSnb1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb1} alt="icon" />
+      <Image preview={false} src={iconImgSnb1} alt="icon" />
     </div>
   );
 };
 const IconImgSnb2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb2} alt="icon" />
+      <Image preview={false} src={iconImgSnb2} alt="icon" />
     </div>
   );
 };
 const IconImgSnb3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb3} alt="icon" />
+      <Image preview={false} src={iconImgSnb3} alt="icon" />
     </div>
   );
 };
 const IconImgSnb4 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb4} alt="icon" />
+      <Image preview={false} src={iconImgSnb4} alt="icon" />
     </div>
   );
 };
 const IconImgSnb5 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb5} alt="icon" />
+      <Image preview={false} src={iconImgSnb5} alt="icon" />
     </div>
   );
 };
 const IconImgSnb6 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb6} alt="icon" />
+      <Image preview={false} src={iconImgSnb6} alt="icon" />
     </div>
   );
 };
 const IconImgSnb7 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb7} alt="icon" />
+      <Image preview={false} src={iconImgSnb7} alt="icon" />
     </div>
   );
 };
 const IconImgSnb8 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb8} alt="icon" />
+      <Image preview={false} src={iconImgSnb8} alt="icon" />
     </div>
   );
 };
 const IconImgSnb9 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb9} alt="icon" />
+      <Image preview={false} src={iconImgSnb9} alt="icon" />
     </div>
   );
 };
 const IconImgSnb10 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb10} alt="icon" />
+      <Image preview={false} src={iconImgSnb10} alt="icon" />
     </div>
   );
 };
 const IconImgSnb11 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb11} alt="icon" />
+      <Image preview={false} src={iconImgSnb11} alt="icon" />
     </div>
   );
 };
 const IconImgSnb12 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb12} alt="icon" />
+      <Image preview={false} src={iconImgSnb12} alt="icon" />
     </div>
   );
 };
 const IconImgSnb13 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb13} alt="icon" />
+      <Image preview={false} src={iconImgSnb13} alt="icon" />
     </div>
   );
 };
 const IconImgSnb1Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb1Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb1Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb2Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb2Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb2Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb3Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb3Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb3Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb4Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb4Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb4Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb5Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb5Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb5Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb6Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb6Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb6Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb7Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb7Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb7Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb8Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb8Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb8Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb9Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb9Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb9Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb10Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb10Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb10Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb11Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb11Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb11Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb12Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb12Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb12Act} alt="icon" />
     </div>
   );
 };
 const IconImgSnb13Act = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconImgSnb13Act} alt="icon" />
+      <Image preview={false} src={iconImgSnb13Act} alt="icon" />
     </div>
   );
 };
 const IconPlusGray = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPlusGray} alt="icon" />
+      <Image preview={false} src={iconPlusGray} alt="icon" />
     </div>
   );
 };
 const IconPopover = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPopover} alt="icon" />
+      <Image preview={false} src={iconPopover} alt="icon" />
     </div>
   );
 };
 const IconPopoverBlk = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPopoverBlk} alt="icon" />
+      <Image preview={false} src={iconPopoverBlk} alt="icon" />
     </div>
   );
 };
 const IconTypeBlock = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTypeBlock} alt="icon" />
+      <Image preview={false} src={iconTypeBlock} alt="icon" />
     </div>
   );
 };
 const IconTypeBlockAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTypeBlockAct} alt="icon" />
+      <Image preview={false} src={iconTypeBlockAct} alt="icon" />
     </div>
   );
 };
 const IconTypeList = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTypeList} alt="icon" />
+      <Image preview={false} src={iconTypeList} alt="icon" />
     </div>
   );
 };
 const IconTypeListAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTypeListAct} alt="icon" />
+      <Image preview={false} src={iconTypeListAct} alt="icon" />
     </div>
   );
 };
 const IconExpand = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconExpand} alt="icon" />
+      <Image preview={false} src={iconExpand} alt="icon" />
     </div>
   );
 };
 const IconUpArrow = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconUpArrow} alt="icon" />
+      <Image preview={false} src={iconUpArrow} alt="icon" />
     </div>
   );
 };
 const IconTempl1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempl1} alt="icon" />
+      <Image preview={false} src={iconTempl1} alt="icon" />
     </div>
   );
 };
 const IconTempl2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempl2} alt="icon" />
+      <Image preview={false} src={iconTempl2} alt="icon" />
     </div>
   );
 };
 const IconTempl3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempl3} alt="icon" />
+      <Image preview={false} src={iconTempl3} alt="icon" />
     </div>
   );
 };
 const IconDetail = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDetail} alt="icon" />
+      <Image preview={false} src={iconDetail} alt="icon" />
     </div>
   );
 };
 const IconCopy = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopy} alt="icon" />
+      <Image preview={false} src={iconCopy} alt="icon" />
     </div>
   );
 };
 const IconLike = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLike} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconLike} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconDisLike = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDisLike} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconDisLike} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconLikeAct = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLikeAct} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconLikeAct} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconDisLikeAct = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDisLikeAct} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconDisLikeAct} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconLikeG = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLikeG} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconLikeG} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconDisLikeG = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDisLikeG} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconDisLikeG} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconLikeGAct = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLikeGAct} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconLikeGAct} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconDisLikeGAct = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDisLikeGAct} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconDisLikeGAct} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconDeleteGry = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDeleteGry} alt="icon" />
+      <Image preview={false} src={iconDeleteGry} alt="icon" />
     </div>
   );
 };
 const IconEditGry = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconEditGry} alt="icon" />
+      <Image preview={false} src={iconEditGry} alt="icon" />
     </div>
   );
 };
 const IconCopyGry = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopyGry} alt="icon" />
+      <Image preview={false} src={iconCopyGry} alt="icon" />
     </div>
   );
 };
 const IconAi = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAi} alt="icon" />
+      <Image preview={false} src={iconAi} alt="icon" />
     </div>
   );
 };
 const IconReset = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconReset} alt="icon" />
+      <Image preview={false} src={iconReset} alt="icon" />
     </div>
   );
 };
 const IconResetType2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconResetType2} alt="icon" />
+      <Image preview={false} src={iconResetType2} alt="icon" />
     </div>
   );
 };
 const IconResetGry = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconResetGry} alt="icon" />
+      <Image preview={false} src={iconResetGry} alt="icon" />
     </div>
   );
 };
 const IconPrev = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPrev} alt="icon" />
+      <Image preview={false} src={iconPrev} alt="icon" />
     </div>
   );
 };
 const IconPrevQuick = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPrevQuick} alt="icon" />
+      <Image preview={false} src={iconPrevQuick} alt="icon" />
     </div>
   );
 };
 const IconNext = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconNext} alt="icon" />
+      <Image preview={false} src={iconNext} alt="icon" />
     </div>
   );
 };
 const IconNextW = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconNextW} alt="icon" />
+      <Image preview={false} src={iconNextW} alt="icon" />
     </div>
   );
 };
 const IconNextQuick = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconNextQuick} alt="icon" />
+      <Image preview={false} src={iconNextQuick} alt="icon" />
     </div>
   );
 };
 const IconCreatePrev = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCreatePrev} alt="icon" />
+      <Image preview={false} src={iconCreatePrev} alt="icon" />
     </div>
   );
 };
 const IconCreateNext = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCreateNext} alt="icon" />
+      <Image preview={false} src={iconCreateNext} alt="icon" />
     </div>
   );
 };
 const IconCreatePrevDis = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCreatePrevDis} alt="icon" />
+      <Image preview={false} src={iconCreatePrevDis} alt="icon" />
     </div>
   );
 };
 const IconCreateNextDis = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCreateNextDis} alt="icon" />
+      <Image preview={false} src={iconCreateNextDis} alt="icon" />
     </div>
   );
 };
 const IconPlay = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPlay} alt="icon" />
+      <Image preview={false} src={iconPlay} alt="icon" />
     </div>
   );
 };
 const IconMmsAni = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMmsAni} alt="icon" />
+      <Image preview={false} src={iconMmsAni} alt="icon" />
     </div>
   );
 };
 const IconSaleAni = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSaleAni} alt="icon" />
+      <Image preview={false} src={iconSaleAni} alt="icon" />
     </div>
   );
 };
 const IconBannerAni = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconBannerAni} alt="icon" />
+      <Image preview={false} src={iconBannerAni} alt="icon" />
     </div>
   );
 };
 const IconBannerNormal = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconBannerNormal} alt="icon" />
+      <Image preview={false} src={iconBannerNormal} alt="icon" />
     </div>
   );
 };
 const IconBannerT = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconBannerT} alt="icon" />
+      <Image preview={false} src={iconBannerT} alt="icon" />
     </div>
   );
 };
 const IconNoticeAni = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconNoticeAni} alt="icon" />
+      <Image preview={false} src={iconNoticeAni} alt="icon" />
     </div>
   );
 };
 const IconSurveyAni = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSurveyAni} alt="icon" />
+      <Image preview={false} src={iconSurveyAni} alt="icon" />
     </div>
   );
 };
 const IconCare = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCare} alt="icon" />
+      <Image preview={false} src={iconCare} alt="icon" />
     </div>
   );
 };
 const IconMarketing = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMarketing} alt="icon" />
+      <Image preview={false} src={iconMarketing} alt="icon" />
     </div>
   );
 };
 const IconStepArrow = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconStepArrow} alt="icon" />
+      <Image preview={false} src={iconStepArrow} alt="icon" />
     </div>
   );
 };
 const IconSpeaker = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSpeaker} alt="icon" />
+      <Image preview={false} src={iconSpeaker} alt="icon" />
     </div>
   );
 };
 const IconLock = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLock} alt="icon" />
+      <Image preview={false} src={iconLock} alt="icon" />
     </div>
   );
 };
 const IconCreator = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCreator} alt="icon" />
+      <Image preview={false} src={iconCreator} alt="icon" />
     </div>
   );
 };
 const IconEditor = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconEditor} alt="icon" />
+      <Image preview={false} src={iconEditor} alt="icon" />
     </div>
   );
 };
 const IconHub = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconHub} alt="icon" />
+      <Image preview={false} src={iconHub} alt="icon" />
     </div>
   );
 };
 const IconEmpty = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconEmpty} alt="icon" />
+      <Image preview={false} src={iconEmpty} alt="icon" />
     </div>
   );
 };
 const IconShare = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconShare} alt="icon" />
+      <Image preview={false} src={iconShare} alt="icon" />
     </div>
   );
 };
 const IconShareGry = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconShareGry} alt="icon" />
+      <Image preview={false} src={iconShareGry} alt="icon" />
     </div>
   );
 };
 const IconRename = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconRename} alt="icon" />
+      <Image preview={false} src={iconRename} alt="icon" />
     </div>
   );
 };
 const IconCopyBlk = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopyBlk} alt="icon" />
+      <Image preview={false} src={iconCopyBlk} alt="icon" />
     </div>
   );
 };
 const IconCopyCircle = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopyCircle} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconCopyCircle} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconCopyCircleAct = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopyCircleAct} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconCopyCircleAct} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconCopyCircle2 = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopyCircle2} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconCopyCircle2} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconCopyCircleAct2 = ({ style, onClick }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopyCircleAct2} alt="icon" onClick={onClick} />
+      <Image preview={false} src={iconCopyCircleAct2} alt="icon" onClick={onClick} />
     </div>
   );
 };
 const IconNew = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconNew} alt="icon" />
+      <Image preview={false} src={iconNew} alt="icon" />
     </div>
   );
 };
 const IconMoreWht = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMoreWht} alt="icon" />
+      <Image preview={false} src={iconMoreWht} alt="icon" />
     </div>
   );
 };
 const IconCopyWht = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCopyWht} alt="icon" />
+      <Image preview={false} src={iconCopyWht} alt="icon" />
     </div>
   );
 };
 const IconAdmin = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAdmin} alt="icon" />
+      <Image preview={false} src={iconAdmin} alt="icon" />
     </div>
   );
 };
 const IconUser = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconUser} alt="icon" />
+      <Image preview={false} src={iconUser} alt="icon" />
     </div>
   );
 };
 const IconAsk = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAsk} alt="icon" />
+      <Image preview={false} src={iconAsk} alt="icon" />
     </div>
   );
 };
 const IconUpload = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconUpload} alt="icon" />
+      <Image preview={false} src={iconUpload} alt="icon" />
     </div>
   );
 };
 const IconTempSlct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempSlct} alt="icon" />
+      <Image preview={false} src={iconTempSlct} alt="icon" />
     </div>
   );
 };
 const IconTempChange = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTempChange} alt="icon" />
+      <Image preview={false} src={iconTempChange} alt="icon" />
     </div>
   );
 };
 const IconInspection = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconInspection} alt="icon" />
+      <Image preview={false} src={iconInspection} alt="icon" />
     </div>
   );
 };
 const IconReload = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconReload} alt="icon" />
+      <Image preview={false} src={iconReload} alt="icon" />
     </div>
   );
 };
 const IconFaceGood = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconFaceGood} alt="icon" />
+      <Image preview={false} src={iconFaceGood} alt="icon" />
     </div>
   );
 };
 const IconFaceBad = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconFaceBad} alt="icon" />
+      <Image preview={false} src={iconFaceBad} alt="icon" />
     </div>
   );
 };
 const IconModifyType2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconModifyType2} alt="icon" />
+      <Image preview={false} src={iconModifyType2} alt="icon" />
     </div>
   );
 };
 const IconWriterTit1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconWriterTit1} alt="icon" />
+      <Image preview={false} src={iconWriterTit1} alt="icon" />
     </div>
   );
 };
 const IconWriterTit2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconWriterTit2} alt="icon" />
+      <Image preview={false} src={iconWriterTit2} alt="icon" />
     </div>
   );
 };
 const IconMoreArrow2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMoreArrow2} alt="icon" />
+      <Image preview={false} src={iconMoreArrow2} alt="icon" />
     </div>
   );
 };
 const IconNetworkAni = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconNetworkAni} alt="icon" />
+      <Image preview={false} src={iconNetworkAni} alt="icon" />
     </div>
   );
 };
 const IconPushAni = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconPushAni} alt="icon" />
+      <Image preview={false} src={iconPushAni} alt="icon" />
     </div>
   );
 };
 const IconDelHistory = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDelHistory} alt="icon" />
+      <Image preview={false} src={iconDelHistory} alt="icon" />
     </div>
   );
 };
 const IconIng = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconIng} alt="icon" />
+      <Image preview={false} src={iconIng} alt="icon" />
     </div>
   );
 };
 const IconMamf = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMamf} alt="icon" />
+      <Image preview={false} src={iconMamf} alt="icon" />
     </div>
   );
 };
 const IconTabSliderPrev = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTabSliderPrev} alt="icon" />
+      <Image preview={false} src={iconTabSliderPrev} alt="icon" />
     </div>
   );
 };
 const IconTabSliderNext = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTabSliderNext} alt="icon" />
+      <Image preview={false} src={iconTabSliderNext} alt="icon" />
     </div>
   );
 };
 const IconMoreArrowBlue = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMoreArrowBlue} alt="icon" />
+      <Image preview={false} src={iconMoreArrowBlue} alt="icon" />
     </div>
   );
 };
 const IconRecommend = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconRecommend} alt="icon" />
+      <Image preview={false} src={iconRecommend} alt="icon" />
     </div>
   );
 };
 const IconSmart = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSmart} alt="icon" />
+      <Image preview={false} src={iconSmart} alt="icon" />
     </div>
   );
 };
 const IconMessage = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMessage} alt="icon" />
+      <Image preview={false} src={iconMessage} alt="icon" />
     </div>
   );
 };
 const IconMessage2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMessage2} alt="icon" />
+      <Image preview={false} src={iconMessage2} alt="icon" />
     </div>
   );
 };
 const IconNoImg = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconNoImg} alt="icon" />
+      <Image preview={false} src={iconNoImg} alt="icon" />
     </div>
   );
 };
 const IconAiInfo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAiInfo} alt="icon" />
+      <Image preview={false} src={iconAiInfo} alt="icon" />
     </div>
   );
 };
 const IconSpin = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSpin} alt="icon" />
+      <Image preview={false} src={iconSpin} alt="icon" />
     </div>
   );
 };
 const IconMenuPlus = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMenuPlus} alt="icon" />
+      <Image preview={false} src={iconMenuPlus} alt="icon" />
     </div>
   );
 };
 const IconAnswerComp = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAnswerComp} alt="icon" />
+      <Image preview={false} src={iconAnswerComp} alt="icon" />
     </div>
   );
 };
 const IconAnswerYet = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAnswerYet} alt="icon" />
+      <Image preview={false} src={iconAnswerYet} alt="icon" />
     </div>
   );
 };
 const IconFilterPlus = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconFilterPlus} alt="icon" />
+      <Image preview={false} src={iconFilterPlus} alt="icon" />
     </div>
   );
 };
 const IconFilterMinus = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconFilterMinus} alt="icon" />
+      <Image preview={false} src={iconFilterMinus} alt="icon" />
     </div>
   );
 };
 const IconFullView = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconFullView} alt="icon" />
+      <Image preview={false} src={iconFullView} alt="icon" />
     </div>
   );
 };
 const IconSmartTit1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSmartTit1} alt="icon" />
+      <Image preview={false} src={iconSmartTit1} alt="icon" />
     </div>
   );
 };
 const IconSmartTit2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSmartTit2} alt="icon" />
+      <Image preview={false} src={iconSmartTit2} alt="icon" />
     </div>
   );
 };
 const IconSmartBee = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSmartBee} alt="icon" />
+      <Image preview={false} src={iconSmartBee} alt="icon" />
     </div>
   );
 };
 const IconSmartBee2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSmartBee2} alt="icon" />
+      <Image preview={false} src={iconSmartBee2} alt="icon" />
     </div>
   );
 };
 const IconSmartBeeW = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSmartBeeW} alt="icon" />
+      <Image preview={false} src={iconSmartBeeW} alt="icon" />
     </div>
   );
 };
 const IconDragBf = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDragBf} alt="icon" />
+      <Image preview={false} src={iconDragBf} alt="icon" />
     </div>
   );
 };
 const IconDragAf = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconDragAf} alt="icon" />
+      <Image preview={false} src={iconDragAf} alt="icon" />
     </div>
   );
 };
 const IconLogoText = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconLogoText} alt="icon" />
+      <Image preview={false} src={iconLogoText} alt="icon" />
     </div>
   );
 };
 const IconChk = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconChk} alt="icon" />
+      <Image preview={false} src={iconChk} alt="icon" />
     </div>
   );
 };
 const IconRightArrow = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconRightArrow} alt="icon" />
+      <Image preview={false} src={iconRightArrow} alt="icon" />
     </div>
   );
 };
 const IconGnbWriter = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbWriter} alt="icon" />
+      <Image preview={false} src={iconGnbWriter} alt="icon" />
     </div>
   );
 };
 const IconGnbWriterAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGnbWriterAct} alt="icon" />
+      <Image preview={false} src={iconGnbWriterAct} alt="icon" />
     </div>
   );
 };
 const IconGuidePrev = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGuidePrev} alt="icon" />
+      <Image preview={false} src={iconGuidePrev} alt="icon" />
     </div>
   );
 };
 const IconGuideNext = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGuideNext} alt="icon" />
+      <Image preview={false} src={iconGuideNext} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList1} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList1} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList2} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList2} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList3} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList3} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList4 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList4} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList4} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList5 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList5} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList5} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList6 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList6} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList6} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList7 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList7} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList7} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList8 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList8} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList8} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList9 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList9} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList9} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList10 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList10} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList10} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList11 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList11} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList11} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList12 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList12} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList12} alt="icon" />
     </div>
   );
 };
 const IconAicwTmpList13 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAicwTmpList13} alt="icon" />
+      <Image preview={false} src={iconAicwTmpList13} alt="icon" />
     </div>
   );
 };
 const IconQuality1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQuality1} alt="icon" />
+      <Image preview={false} src={iconQuality1} alt="icon" />
     </div>
   );
 };
 const IconQuality2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQuality2} alt="icon" />
+      <Image preview={false} src={iconQuality2} alt="icon" />
     </div>
   );
 };
 const IconQuality3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQuality3} alt="icon" />
+      <Image preview={false} src={iconQuality3} alt="icon" />
     </div>
   );
 };
 const IconQualityBlu1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQualityBlu1} alt="icon" />
+      <Image preview={false} src={iconQualityBlu1} alt="icon" />
     </div>
   );
 };
 const IconQualityBlu2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQualityBlu2} alt="icon" />
+      <Image preview={false} src={iconQualityBlu2} alt="icon" />
     </div>
   );
 };
 const IconQualityBlu3 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconQualityBlu3} alt="icon" />
+      <Image preview={false} src={iconQualityBlu3} alt="icon" />
     </div>
   );
 };
 const IconTutoriImg = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTutoriImg} alt="icon" />
+      <Image preview={false} src={iconTutoriImg} alt="icon" />
     </div>
   );
 };
 const IconTutoriVdo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTutoriVdo} alt="icon" />
+      <Image preview={false} src={iconTutoriVdo} alt="icon" />
     </div>
   );
 };
 const IconTutoriImgAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTutoriImgAct} alt="icon" />
+      <Image preview={false} src={iconTutoriImgAct} alt="icon" />
     </div>
   );
 };
 const IconTutoriVdoAct = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconTutoriVdoAct} alt="icon" />
+      <Image preview={false} src={iconTutoriVdoAct} alt="icon" />
     </div>
   );
 };
 const IconAdobe1 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAdobe1} alt="icon" />
+      <Image preview={false} src={iconAdobe1} alt="icon" />
     </div>
   );
 };
 const IconAdobe2 = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconAdobe2} alt="icon" />
+      <Image preview={false} src={iconAdobe2} alt="icon" />
     </div>
   );
 };
 const IconSearchGry = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconSearchGry} alt="icon" />
+      <Image preview={false} src={iconSearchGry} alt="icon" />
     </div>
   );
 };
 const IconGenerated = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconGenerated} alt="icon" />
+      <Image preview={false} src={iconGenerated} alt="icon" />
     </div>
   );
 };
 const IconArrowPuple = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconArrowPuple} alt="icon" />
+      <Image preview={false} src={iconArrowPuple} alt="icon" />
     </div>
   );
 };
 const IconCircleRight = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconCircleRight} alt="icon" />
+      <Image preview={false} src={iconCircleRight} alt="icon" />
     </div>
   );
 };
 const IconBlank = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconBlank} alt="icon" />
+      <Image preview={false} src={iconBlank} alt="icon" />
     </div>
   );
 };
 const IconEye = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconEye} alt="icon" />
+      <Image preview={false} src={iconEye} alt="icon" />
     </div>
   );
 };
 const IconMail = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMail} alt="icon" />
+      <Image preview={false} src={iconMail} alt="icon" />
     </div>
   );
 };
 const IconMemo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconMemo} alt="icon" />
+      <Image preview={false} src={iconMemo} alt="icon" />
     </div>
   );
 };
 const IconInfo = ({ style }: Props) => {
   return (
     <div className={"ui-icons"} style={style}>
-      <Image src={iconInfo} alt="icon" />
+      <Image preview={false} src={iconInfo} alt="icon" />
     </div>
   );
 };

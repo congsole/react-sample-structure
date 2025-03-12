@@ -42,7 +42,7 @@ export default function HeaderGnb({ className = "" }: Props) {
     <header className={`header ${className}`}>
       <div className="logo">
         <Link to="/">
-          <Image src={logo} alt="logo" />
+          <Image preview={false} src={logo} alt="logo"/>
         </Link>
       </div>
       <div className="tab-area">

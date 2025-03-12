@@ -12,7 +12,7 @@ export default function Footer({ className = "" }: Props) {
     <footer className={`footer ${className}`}>
       <div className="footer-logo">
         <Link to="/">
-          <Image src={FooterLogo} alt="logo" />
+          <Image preview={false} src={FooterLogo} alt="logo" />
         </Link>
         <span className="copyright">
           SK TELECOM CO., LTD. All rights reserved.

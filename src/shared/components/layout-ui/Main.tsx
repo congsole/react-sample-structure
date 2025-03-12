@@ -58,7 +58,7 @@ const Main = () => {
                             </div>
                         </div>
                         <div className="main-img">
-                            <Image src={mainImg} alt="메인이미지" />
+                            <Image preview={false} src={mainImg} alt="메인이미지" />
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ const Main = () => {
                                 </Link>
                             </div>
                             <div className="service-img">
-                                <Image src={service1} alt="서비스이미지1" />
+                                <Image preview={false} src={service1} alt="서비스이미지1" />
                             </div>
                         </li>
                         <li>
@@ -127,7 +127,7 @@ const Main = () => {
                                 </Link>
                             </div>
                             <div className="service-img">
-                                <Image src={service2} alt="서비스이미지2" />
+                                <Image preview={false} src={service2} alt="서비스이미지2" />
                             </div>
                         </li>
                         <li>
@@ -156,7 +156,7 @@ const Main = () => {
                                 </Link>
                             </div>
                             <div className="service-img">
-                                <Image src={service3} alt="서비스이미지3" />
+                                <Image preview={false} src={service3} alt="서비스이미지3" />
                             </div>
                         </li>
                     </ul>
