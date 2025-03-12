@@ -3,15 +3,13 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import 'Highcharts/highcharts-more';
 import 'highcharts/modules/drilldown';
-import 'highcharts/modules/exporting'
-import 'highcharts/modules/export-data'
-import 'highcharts/modules/accessibility'
+import 'highcharts/modules/exporting';
+import 'highcharts/modules/export-data';
+import 'highcharts/modules/accessibility';
 
-type PortletContent = {
-    key: React.Key;
-}
+import { PortletContent } from "modules/aimc/types/report";
 
-const Dashboard_1: React.FC<PortletContent> = ({key}) => {
+const Dashboard_1: React.FC<PortletContent> = ({key, title}) => {
 
     const chartOptions = {
         chart: {
@@ -27,7 +25,7 @@ const Dashboard_1: React.FC<PortletContent> = ({key}) => {
         },
 
         title: {
-            text: '제품 분류 별 매출/영업이익'
+            text: title
         },
 
         accessibility: {

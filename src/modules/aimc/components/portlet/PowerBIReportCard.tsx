@@ -85,6 +85,7 @@ export default function PowerBIReportCard({
           <div className="report-container">
             <Suspense fallback={<div className="loading">LOADING</div>}>
               <PortletContent
+                title={data.title}
                 key={`${serviceId}-${pageId}-Portlet_${data.portletId}`}
               />
             </Suspense>

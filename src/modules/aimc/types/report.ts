@@ -1,3 +1,5 @@
+import React from "react";
+
 export type Filter = {
     typeCd: string;
     description: string | undefined;
@@ -47,4 +49,9 @@ export type Menu = {
     pages: Page[];
     pageFilters: Filter[];
     prgrpFilters: Filter[];
+}
+
+export type PortletContent = {
+    key: React.Key;
+    title: string;
 }
