@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState, lazy, Suspense } from "react";
 import {Filter, Page, PortletData} from "modules/aimc/types/report";
 import cn from "classnames";
 
 import ButtonIcon from "shared/components/ButtonIcon";
 import { IconClose, IconFullView } from "shared/components/Icon";
-// import usePortletStateStore from "@/app/_store/portletStateStore";
 
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import MoreDropdown from "../MoreDropdown";
@@ -22,12 +21,11 @@ type ReportCardProps = {
   onDelete: (portletId: number) => void;
   isFullScreen?: boolean; // 전체화면 가능 여부
   serviceId: number;
+  pageId: number;
   isFixed: boolean;
 };
 
-/**
- * PowerBI Report Card
- */
+
 export default function PowerBIReportCard({
   data,
   globalFilterSetting,
@@ -35,8 +33,11 @@ export default function PowerBIReportCard({
   onDelete,
   isFullScreen = false,
   serviceId,
-                                            isFixed
+  pageId,
+  isFixed,
 }: ReportCardProps) {
+
+  const PortletContent = lazy(() => import(`modules/aimc/components/report/${serviceId}/${pageId}/Dashboard_${data.portletId}`));
   // const { portletStateList, updatePortletState } = usePortletStateStore();
   const handleFullScreen = useFullScreenHandle();
 
@@ -52,7 +53,7 @@ export default function PowerBIReportCard({
   return (
       <div
         className="card"
-        style={{ height: "100%", backgroundColor: "white", overflow: "hidden" }}
+        style={{ height: "100%", backgroundColor: "white", overflow: "auto" }}
       >
         <div className="view-top">
           <div className="tit-set">
@@ -82,6 +83,11 @@ export default function PowerBIReportCard({
           className={cn("view-content", {})}
         >
           <div className="report-container">
+            <Suspense fallback={<div className="loading">LOADING</div>}>
+              <PortletContent
+                key={`${serviceId}-${pageId}-Portlet_${data.portletId}`}
+              />
+            </Suspense>
           </div>
         </div>
       </div>

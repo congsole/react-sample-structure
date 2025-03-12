@@ -49,17 +49,14 @@ export default function ReportParagraph({
 
     setPortletItems(items);
     setLayout(layouts);
-    console.log(layouts);
   }, [items]);
 
   const handleDragStart = () => {
     setIsDragging(true);
-    console.log("드래그 스타트");
   };
 
   const handleDragStop = () => {
     setIsDragging(false);
-    console.log("드래그 스톱");
   };
 
   const onLayoutChange = async (layout: any[]) => {
@@ -76,8 +73,6 @@ export default function ReportParagraph({
       // }));
       // await saveParagraphLayout(serviceId, userParagraphId, paragraphLayouts);
     }
-    console.log("레이아웃 체인지");
-    console.log(layout);
   };
 
   const handlerDrop = async (
@@ -112,7 +107,6 @@ export default function ReportParagraph({
         minH: portletData.height,
       },
     ]);
-    console.log("핸들드롭");
   };
 
   const handlePortletDelete = async (portletId: number) => {
@@ -146,6 +140,7 @@ export default function ReportParagraph({
             globalFilterSetting={[...menu.pageFilters, ...menu.prgrpFilters]}
             existFilterRemoveAll={existFilterRemoveAll}
             serviceId={serviceId}
+            pageId={pageNum}
             isFixed={page.isFixed}
           />
         );
