@@ -53,5 +53,4 @@ export type Menu = {
 
 export type PortletContent = {
     key: React.Key;
-    title: string;
 }

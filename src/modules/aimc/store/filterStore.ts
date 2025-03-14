@@ -14,7 +14,7 @@ interface FilterState {
 }
 
 const initialOptions: Record<string, string[]> = {
-    startDt: [dayjs().startOf("month").format("YYYY-MM-DD")],
+    startDt: [dayjs().startOf("year").format("YYYY-MM-DD")],
     endDt: [dayjs().subtract(1, "days").format("YYYY-MM-DD")],
     month: [dayjs().subtract(1, "day").format("YYYY-MM")],
     STAT: [],
@@ -22,7 +22,7 @@ const initialOptions: Record<string, string[]> = {
     PRDL: []
 };
 
-const useGlobalFilterStore = create<FilterState>((set, get) => ({
+const useFilterStore = create<FilterState>((set, get) => ({
     selectedOptions: initialOptions,
     setSelectedOptions: (options: Record<string, string[]>) =>
         set((state) => ({
@@ -32,4 +32,4 @@ const useGlobalFilterStore = create<FilterState>((set, get) => ({
     setInitialOptions: (initialOptions) => set({ selectedOptions: initialOptions }),
 }));
 
-export default useGlobalFilterStore;
+export default useFilterStore;
