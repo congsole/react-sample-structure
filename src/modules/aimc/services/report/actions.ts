@@ -1,392 +1,74 @@
-const FILTER_DATA = [
-    // STAT: 도
-    {
-        typeCd: "STAT",
-        name: "도",
-        parentCd: null,
-        options: [
-            "서울",
-            "전라북도",
-            "경기도",
-            "인천광역시",
-            "대전",
-            "전라남도",
-            "경상남도",
-            "부산",
-            "제주",
-            "경상북도",
-            "충청북도",
-            "충청남도",
-            "강원도",
-            "세종특별자치시",
-            "대구",
-            "광주",
-            "울산",
-        ]
-    },
-    // CITY: 시/군/구
-    {
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "서울",
-        options: [
-            "송파구",
-            "은평구",
-            "도봉구",
-            "성북구",
-            "중구",
-            "동작구",
-            "서초구",
-            "강북구",
-            "영등포구",
-            "강남구",
-            "서대문구",
-            "용산구",
-            "동대문구",
-            "광진구",
-            "마포구",
-            "구로구",
-            "종로구",
-            "강동구",
-            "강서구",
-            "중랑구",
-            "금천구",
-            "노원구",
-            "관악구",
-            "양천구",
-            "성동구",
-        ]
-    },
-    {
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "전라북도",
-        options: [
-            "익산시",
-            "전주시",
-            "김제시",
-            "부안군",
-            "고창군",
-            "남원시",
-            "정읍시",
-            "장수군",
-            "완주군",
-            "무주군",
-            "임실군",
-            "순창군",
-            "진안군",
-        ],
-    },
-    {
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "경기도",
-        options: [
-            "가평군",
-            "고양시",
-            "과천시",
-            "광명시",
-            "광주시",
-            "구리시",
-            "군포시",
-            "김포시",
-            "남양주시",
-            "동두천시",
-            "부천시",
-            "성남시",
-            "수원시",
-            "시흥시",
-            "안산시",
-            "안성시",
-            "안양시",
-            "양주시",
-            "양평군",
-            "여주시",
-            "연천군",
-            "오산시",
-            "용인시",
-            "의왕시",
-            "의정부시",
-            "이천시",
-            "파주시",
-            "평택시",
-            "포천시",
-            "화성시",
-        ]
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "인천광역시",
-        options: [
-            "강화군",
-            "계양구",
-            "남동구",
-            "부평구",
-            "연수구",
-            "옹진군",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "대전",
-        options: [
-            "대덕구",
-            "유성구",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "전라남도",
-        options: [
-            "강진군",
-            "고흥군",
-            "곡성군",
-            "광양시",
-            "구례군",
-            "나주시",
-            "담양군",
-            "목포시",
-            "무안군",
-            "보성군",
-            "순천시",
-            "신안군",
-            "여수시",
-            "영광군",
-            "영암군",
-            "완도군",
-            "장성군",
-            "장흥군",
-            "진도군",
-            "함평군",
-            "해남군",
-            "화순군",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "경상남도",
-        options: [
-            "거제시",
-            "거창군",
-            "고성군",
-            "남해군",
-            "밀양시",
-            "사천시",
-            "산청군",
-            "양산시",
-            "의령군",
-            "진주시",
-            "창녕군",
-            "창원시",
-            "통영시",
-            "하동군",
-            "함안군",
-            "함양군",
-            "합천군",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "부산",
-        options: [
-            "금정구",
-            "기장군",
-            "남구",
-            "동구",
-            "동래구",
-            "부산진구",
-            "북구",
-            "사상구",
-            "사하구",
-            "서구",
-            "수영구",
-            "연제구",
-            "영도구",
-            "해운대구",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "제주",
-        options: [
-            "서귀포시",
-            "제주시",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "경상북도",
-        options: [
-            "경산시",
-            "고령군",
-            "구미시",
-            "군위군",
-            "김천시",
-            "문경시",
-            "봉화군",
-            "상주시",
-            "성주군",
-            "영덕군",
-            "영양군",
-            "영주시",
-            "영천시",
-            "예천군",
-            "울진군",
-            "의성군",
-            "청도군",
-            "청송군",
-            "칠곡군",
-            "포항시",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "충청북도",
-        options: [
-            "괴산군",
-            "단양군",
-            "보은군",
-            "영동군",
-            "옥천군",
-            "음성군",
-            "제천시",
-            "증평군",
-            "진천군",
-            "청주시",
-            "충주시",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "충청남도",
-        options: [
-            "계룡시",
-            "공주시",
-            "금산군",
-            "논산시",
-            "보령시",
-            "부여군",
-            "서산시",
-            "예산군",
-            "천안시",
-            "청양군",
-            "홍성군",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "강원도",
-        options: [
-            "동해시",
-            "삼척시",
-            "속초시",
-            "양구군",
-            "양양군",
-            "원주시",
-            "인제군",
-            "정선군",
-            "철원군",
-            "춘천시",
-            "태백시",
-            "홍천군",
-            "화천군",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "세종특별자치시",
-        options: [
-            "세종특별자치시",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "대구",
-        options: [
-            "달서구",
-            "달성군",
-            "수성구",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "광주",
-        options: [
-            "광산구",
-        ],
-    },{
-        typeCd: "CITY",
-        name: "시/군/구",
-        parentCd: "울산",
-        options: [
-            "울주군",
-        ],
-    },
+import salesJson from "assets/data/sales.json";
+import { FILTER_DATA } from "modules/aimc/constants/filters";
 
-    // CUST : 고객분류
-    {
-        typeCd: "CUST",
-        name: "고객분류",
-        parentCd: null,
-        options: [
-            "기업고객",
-            "홈오피스",
-            "개인고객",
-        ]
-    },
-    // PRDL : 제품 대분류
-    {
-        typeCd: "PRDL",
-        name: "제품 대분류",
-        parentCd: null,
-        options: [
-            "가구",
-            "전자제품",
-            "사무용품",
-        ]
-    },
-    // PRDS : 제품 소분류
-    {
-        typeCd: "PRDS",
-        name: "제품 소분류",
-        parentCd: "가구",
-        options: [
-            "테이블",
-            "책상",
-            "의자",
-            "기타 가구"
-        ],
-    },{
-        typeCd: "PRDS",
-        name: "제품 소분류",
-        parentCd: "전자제품",
-        options: [
-            "기계",
-            "복사기",
-            "액세서리",
-            "전화기",
-        ],
-    },{
-        typeCd: "PRDS",
-        name: "제품 소분류",
-        parentCd: "사무용품",
-        options: [
-            "가정용 전자기기",
-            "라벨",
-            "바인더",
-            "봉투",
-            "소모품",
-            "아트",
-            "잠금장치",
-            "저장고",
-            "종이",
-        ],
-    },
-]
+function getRandomColor() {
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function round(number: number, digit?: number) {
+    return Number(number.toFixed(digit));
+}
 
 export function getFilterData(
     typeCd: string,
-    parentCd = null
+    parentCd?: string
 ) {
-    return FILTER_DATA.find(filter => filter.typeCd === typeCd && filter.parentCd === parentCd) || null;
+    return FILTER_DATA.find(filter => filter.typeCd === typeCd && (parentCd ? filter.parentCd === parentCd : true)) || null;
+}
+
+export function getSalesData(
+    startDt: string,
+    endDt: string,
+    CUST: string[],
+    PRDL: string[],
+) {
+    const startDate = new Date(startDt);
+    const endDate = new Date(endDt);
+
+    const data = salesJson;
+
+    const orders = data.filter(order => {
+        const orderDate = new Date(order.주문일);
+        if(
+            orderDate >= startDate &&
+            orderDate <= endDate &&
+            (CUST.length === 0 || CUST.indexOf(order.고객분류) > -1) &&
+            (PRDL.length === 0 || PRDL.indexOf(order.제품대분류) > -1)
+        ) {
+            return order;
+        }
+    });
+
+    const series = getFilterData("PRDL")?.options.map((largeCategory) => {
+        return {
+            name: largeCategory,
+            color: getRandomColor(),
+            smallCategories: getFilterData("PRDS", largeCategory)?.options,
+            data: new Array<{x: number, y: number, z: number, name: string}>,
+        }
+    });
+    series?.forEach((s) => {
+        s.smallCategories?.forEach(smallCategory => {
+            const filteredOrderList = orders.filter((order) => order.제품소분류 === smallCategory);
+            let numOfProducts = 0;
+            let salesSum = 0;
+            let profitSum = 0;
+
+            filteredOrderList.forEach((order) => {
+                salesSum += Number(order.매출);
+                profitSum += Number(order.이익);
+                numOfProducts += Number(order.수량);
+            });
+            s.data.push({
+                x: round(salesSum/numOfProducts, 2),
+                y: round(profitSum/numOfProducts, 2),
+                z: numOfProducts,
+                name: smallCategory,
+            });
+        })
+    })
+    return series || null;
 }
