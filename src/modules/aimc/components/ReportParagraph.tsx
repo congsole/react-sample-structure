@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {
-  Menu, Page, PortletData, PortletLayout,
+  Menu, Page, PortletData,
 } from "modules/aimc/types/report";
 import { useConfirm } from "shared/hooks/alert/useConfirm";
 import { useAlert } from "shared/hooks/alert/useAlert";
@@ -124,32 +124,30 @@ export default function ReportParagraph({
     });
   };
 
-  function generateReportCard(layoutId: string) {
-    const existFilterRemoveAll = serviceId !== 7; //3사경쟁(7) 일때는 기존 필터 유지
-    // const fullScreen = serviceId === 7; //3사경쟁(7) 일때는 전체 화면
-    const data = portletItems.find(
-      (data) => data.portletId === layoutId,
-    );
+  const generateReportCard = useCallback((layoutId: string) => {
+    console.log("또?"); // 이제는 필요할 때만 실행됨
+    const existFilterRemoveAll = serviceId !== 7;
+    const data = portletItems.find((data) => data.portletId === layoutId);
     if (!data) return <></>;
-    let reportCard;
 
-        reportCard = (
-          <PowerBIReportCard
-            onDelete={handlePortletDelete}
-            data={data}
-            globalFilterSetting={[...menu.pageFilters, ...menu.prgrpFilters]}
-            existFilterRemoveAll={existFilterRemoveAll}
-            serviceId={serviceId}
-            pageId={pageNum}
-            isFixed={page.isFixed}
-          />
-        );
     return (
-      <div key={layoutId} className="dnd-movable-item">
-        {reportCard}
-      </div>
+        <div key={layoutId} className="dnd-movable-item">
+          <PowerBIReportCard
+              onDelete={handlePortletDelete}
+              data={data}
+              globalFilterSetting={[...menu.pageFilters, ...menu.prgrpFilters]}
+              existFilterRemoveAll={existFilterRemoveAll}
+              serviceId={serviceId}
+              pageId={pageNum}
+              isFixed={page.isFixed}
+          />
+        </div>
     );
-  }
+  }, [portletItems, serviceId, pageNum, menu.pageFilters, menu.prgrpFilters]);
+
+  const reportCards = useMemo(() => {
+    return layout.map(({ i }) => generateReportCard(i));
+  }, [layout, generateReportCard]);
 
   return (
     <>
@@ -189,7 +187,7 @@ export default function ReportParagraph({
         onDragStart={handleDragStart}
         onDragStop={handleDragStop}
       >
-        {layout.map(({ i }) => generateReportCard(i))}
+        {reportCards}
       </GridLayout>
     </>
   );

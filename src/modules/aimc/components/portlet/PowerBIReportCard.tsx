@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState, lazy, Suspense } from "react";
+import React, { lazy, Suspense, useMemo } from "react";
 import {Filter, Page, PortletData} from "modules/aimc/types/report";
 import cn from "classnames";
 
@@ -26,7 +26,7 @@ type ReportCardProps = {
 };
 
 
-export default function PowerBIReportCard({
+function PowerBIReportCard({
   data,
   globalFilterSetting,
   existFilterRemoveAll = true,
@@ -37,18 +37,10 @@ export default function PowerBIReportCard({
   isFixed,
 }: ReportCardProps) {
 
-  const PortletContent = lazy(() => import(`modules/aimc/components/report/${serviceId}/${pageId}/Dashboard_${data.portletId}`));
-  // const { portletStateList, updatePortletState } = usePortletStateStore();
+  const PortletContent = useMemo(() => {
+    return  lazy(() => import(`modules/aimc/components/report/${serviceId}/${pageId}/Dashboard_${data.portletId}`));
+  }, [serviceId, pageId, data.portletId]);
   const handleFullScreen = useFullScreenHandle();
-
-  // useEffect ::::::::::::::::::
-  // 초기화
-  // useEffect(() => {
-  //   updatePortletState({
-  //     portletId: data.portletId,
-  //     status: "init",
-  //   });
-  // }, [data.portletId, updatePortletState]);
 
   return (
       <div
@@ -81,6 +73,9 @@ export default function PowerBIReportCard({
         </div>
         <div
           className={cn("view-content", {})}
+          onMouseDown={(e) => e.stopPropagation()}
+          onDragStart={(e) => e.stopPropagation()}
+          onDrop={(e) => e.stopPropagation()}
         >
           <div className="report-container">
             <Suspense fallback={<div className="loading">LOADING</div>}>
@@ -94,3 +89,5 @@ export default function PowerBIReportCard({
       </div>
   );
 }
+
+export default React.memo(PowerBIReportCard)
