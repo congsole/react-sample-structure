@@ -42,3 +42,31 @@
 
 // common
 @import "./common/layout";
+
+// dashboard css
+.dashboard-wrapper {
+  //display: flex;
+  //flex-direction: column;
+  //height: 100%;
+  //padding: 10px;
+}
+.dashboard-wrapper > .dashboard-row:not(:last-child) {
+  margin-bottom: 8px; /* 마지막 Row 제외하고 margin 적용 */
+}
+
+//.dashboard-row {
+//  flex: 1;
+//  display: flex;
+//  flex-direction: row;
+//}
+//
+//.dashboard-col {
+//  display: flex;
+//  align-items: stretch;
+//  justify-content: center;
+//}
+
+.highcharts-background {
+  fill: rgba(0, 0, 0, 0.02) !important;
+
+}

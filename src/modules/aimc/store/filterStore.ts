@@ -1,5 +1,6 @@
 import {create} from "zustand";
 import dayjs from "dayjs";
+import {getFilterData} from "../services/report/actions";
 
 type Option = {
     typeCd: string,
@@ -17,7 +18,7 @@ const initialOptions: Record<string, string[]> = {
     startDt: [dayjs().startOf("year").format("YYYY-MM-DD")],
     endDt: [dayjs().subtract(1, "days").format("YYYY-MM-DD")],
     month: [dayjs().subtract(1, "day").format("YYYY-MM")],
-    STAT: [],
+    STAT: getFilterData("STAT")?.options || [],
     CUST: [],
     PRDL: []
 };

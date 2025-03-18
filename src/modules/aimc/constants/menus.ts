@@ -23,7 +23,7 @@ export const AIMC_MENUS = [
                 portlets: [
                     {
                         portletId: '1',
-                        title: '1. 판매량 및 유형별 비중',
+                        title: '유형 별 판매량/매출/이익',
                         description: '',
                         x: 0,
                         y: 0,

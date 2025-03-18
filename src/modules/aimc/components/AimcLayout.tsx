@@ -25,7 +25,7 @@ const AimcLayout: React.FC = ()=> {
             <Snb menu={"AI Marketing Consultant"} />
             <div className="content">
                 <div className="portlet-wrap">
-                    <ReportHeader title={title} pages={pages} orgName={"조직선택조저거러"} serviceId={serviceIdNum} pageId={pageIdNum} />
+                    <ReportHeader title={title} pages={pages} serviceId={serviceIdNum} pageId={pageIdNum} />
                     <Outlet />
                 </div>
             </div>

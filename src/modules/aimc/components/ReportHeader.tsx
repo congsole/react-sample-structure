@@ -11,6 +11,8 @@ import GlobalDateRangeFilter from "shared/components/filter/GlobalDateRangeFilte
 import { Popover, Tooltip } from "antd";
 import dayjs from "dayjs";
 import ReportNav from "./ReportNav";
+import useFilterStore from "../store/filterStore";
+import SelectStateModal from "./modal/SelectOrgModal";
 
 type ReportHeaderProps = {
   title: string;
@@ -18,7 +20,6 @@ type ReportHeaderProps = {
     pageNum: number;
     title: string;
   }[];
-  orgName: string;
   serviceId: number;
   pageId: number;
 };
@@ -26,13 +27,18 @@ type ReportHeaderProps = {
 export default function ReportHeader({
   title,
   pages,
-  orgName,
   serviceId,
 }: ReportHeaderProps) {
   const [showOrgModal, setShowOrgModal] = useState(false);
   const [showStoreModal, setShowStoreModal] = useState(false);
   const [showReportEditorModal, setShowReportEditorModal] = useState(false);
   const [isStoreReport, setIsStoreReport] = useState(serviceId === 8); // 매장 리포트인지 여부
+  const [selectedStates, setSelectedStates] = useState<string>("");
+  const selectedStateList = useFilterStore((state) => state.getSelectedOptions("STAT")) || [];
+
+  React.useEffect(() => {
+    setSelectedStates(selectedStateList.join(", "));
+  }, [selectedStateList]);
 
   const monFilterIds = [8, 26];
   const noOrgOrStoreIds = [26, 27];
@@ -85,7 +91,7 @@ export default function ReportHeader({
               ) : (
                 <div className="branch">
                   <div className="place">
-                    <Tooltip title={orgName}>{orgName}</Tooltip>
+                    <Tooltip title={selectedStates}>{selectedStates}</Tooltip>
                   </div>
                   <button
                     type="button"
@@ -121,14 +127,10 @@ export default function ReportHeader({
           )}
         </div>
       </div>
-      {/*<SelectOrgModal*/}
-      {/*  showModal={showOrgModal}*/}
-      {/*  onCancel={() => setShowOrgModal(false)}*/}
-      {/*/>*/}
-      {/*<SelectStoreModal*/}
-      {/*  showModal={showStoreModal}*/}
-      {/*  onCancel={() => setShowStoreModal(false)}*/}
-      {/*/>*/}
+      <SelectStateModal
+        showModal={showOrgModal}
+        onCancel={() => setShowOrgModal(false)}
+      />
 
       {/*{serviceId !== 6 && !pages[page - 1].isFixed && (*/}
       {/*  <ReportEditorModal*/}

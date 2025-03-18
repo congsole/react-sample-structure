@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import 'Highcharts/highcharts-more';
 import 'highcharts/modules/drilldown';
+import 'highcharts/modules/sunburst';
 import 'highcharts/modules/exporting';
 import 'highcharts/modules/export-data';
 import 'highcharts/modules/accessibility';
@@ -10,13 +11,16 @@ import 'highcharts/modules/accessibility';
 import { PortletContent } from "modules/aimc/types/report";
 import { getSalesData } from "modules/aimc/services/report/actions";
 import useFilterStore from "modules/aimc/store/filterStore";
+import { Row, Col } from "antd";
 
 const Dashboard_1: React.FC<PortletContent> = ({key}) => {
     const startDt = useFilterStore((state) => state.getSelectedOptions("startDt"))![0];
     const endDt = useFilterStore((state) => state.getSelectedOptions("endDt"))![0];
+    const STAT = useFilterStore((state) => state.getSelectedOptions("STAT")) || [];
     const CUST = useFilterStore((state) => state.getSelectedOptions("CUST")) || [];
     const PRDL = useFilterStore((state) => state.getSelectedOptions("PRDL")) || [];
-    const series = getSalesData(startDt, endDt, CUST, PRDL);
+
+    const data = getSalesData(startDt, endDt, STAT, CUST, PRDL) || [];
 
     const chartOptions_매출_이익_판매량
         // : Highcharts.ChartOptions
@@ -26,7 +30,9 @@ const Dashboard_1: React.FC<PortletContent> = ({key}) => {
             plotBorderWidth: 0,
             zooming: {
                 type: 'xy'
-            }
+            },
+            width: null,
+            height: 350
         },
 
         credits: {
@@ -37,7 +43,7 @@ const Dashboard_1: React.FC<PortletContent> = ({key}) => {
         },
 
         title: {
-            text: '매출/이익/제품소분류 별 판매량 분포',
+            text: '제품 분류 별 매출vs이익 분포',
             align: 'left',
         },
 
@@ -112,51 +118,140 @@ const Dashboard_1: React.FC<PortletContent> = ({key}) => {
             }
         },
 
-        // series: [
-        //     {		name: '가전',
-        //         color: '#FF3232',
-        //         data: [
-        //             { x: 15.1, y: 0.756, z: 0.063, name: 'Pinterest' },
-        //             {
-        //                 x: 18.6,
-        //                 y: 0.331,
-        //                 z: 0.0075,
-        //                 name:
-        //                     'Zoom',
-        //             },
-        //             { x: 14.4, y: 2.16, z: 0.911, name: 'Lyft' },
-        //             { x: 7, y: 0.602, z: 0.155, name: 'Fartech' },
-        //             { x: 6.3, y: 0.16, z: 0.0053, name: 'Elastic' },
-        //             { x: 5.9, y: 0.833, z: 0.102, name: 'SolarWinds' },
-        //             { x: 4.8, y: 0.241, z: 0.131, name: 'Anaplan' },
-        //             { x: 4.6, y: 0.088, z: 0.03, name: 'Beyond Meat' },
-        //
-        //         ]
-        //     },
-        //     {
-        //         name: '가구',
-        //         color: '#32ff32',
-        //         data: [
-        //             { x: 3.9, y: 0.118, z: 0.041, name: 'PagerDuty' },
-        //             { x: 2.1, y: 0.254, z: 0.155, name: 'SurveyMonkey' },
-        //             { x: 2, y: 0.15, z: 0.195, name: 'Jumia' },
-        //             { x: 1.8, y: 0.253, z: 0.02, name: 'Upwork' },
-        //             { x: 1.4, y: 0.292, z: 0.064, name: 'Eventbrite' }
-        //         ]
-        //     }
-        // ]
-        series: series,
+        series: data.series,
     }
+
+    const KPIOptions = (title: string, value: {last: number, now: number}, unit?: string, color?: string) => ({
+        chart: {
+            type: 'KPI',
+            height: 120,
+        },
+        credits: {
+            enabled: false // 하단의 로고 지우는 옵션
+        },
+        title: {
+            text: title,
+            align: 'left',
+        },
+        subtitle: {
+            useHTML: true, // HTML 사용 가능하도록 설정
+            text: `
+<span style="color: grey; font-size: 15px;">직전대비 <span style="color: ${value.last > 0 ? 'red' : 'blue'};">${value.last >= 0 ? '+' : ''}${value.last.toLocaleString()} %</span></span>
+<br /><span style="font-weight: bold;">${value.now.toLocaleString()} ${unit ?? ''}</span><br />`,
+            align: 'right',
+            style: {
+                color: color ?? "#FF5733", // 글자 색상
+                fontSize: "30px", // 글자 크기
+                fontWeight: "bold", // 글자 두께
+                fontFamily: "Arial, sans-serif" // 폰트 지정
+            }
+        },
+    });
+
+    const sunburstChartOptions = (title: string, chartData: Array<SunburstDonutDataType>, unit?: string) => ({
+        chart: {
+            height: 290,
+        },
+        title: {
+            text: title,
+            align: 'left',
+        },
+        credits: {
+            enabled: false // 하단의 로고 지우는 옵션
+        },
+        series: [
+            {
+                type: 'sunburst',
+                name: 'Total',
+                data: chartData,
+                allowDrillToNode: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    format: '{point.name}',
+                    color: '#000000',
+                    style: {
+                        textOutline: false,
+                    }
+                },
+                levels: [
+                    {
+                        level: 1,
+                        levelIsConstant: false,
+                        dataLabels: {
+                            filter: {
+                                property: 'outerArcLength',
+                                operator: '>',
+                                value: 64
+                            }
+                        }
+                    },
+                    {
+                        level: 2,
+                        colorByPoint: true
+                    }
+                ]
+            }
+        ],
+
+        tooltip: {
+            headerFormat: '',
+            pointFormat: `<b>{point.name}</b>: <b>{point.value}</b> ${unit}`
+        }
+    });
 
     return (
         <div
             className="dashboard-wrapper"
             key={key}
         >
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={chartOptions_매출_이익_판매량}
-            />
+            <Row className="dashboard-row" gutter={8}>
+                <Col span={24} className="dashboard-col">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={chartOptions_매출_이익_판매량}
+                    />
+                </Col>
+            </Row>
+            <Row className="dashboard-row" gutter={8}>
+                <Col span={8} className="dashboard-col">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={KPIOptions("총 판매량", data.totalOrders, "개", "black")}
+                    />
+                </Col>
+                <Col span={8} className="dashboard-col">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={KPIOptions("총 매출", data.totalSales, "$", "black")}
+                    />
+                </Col>
+                <Col span={8} className="dashboard-col">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={KPIOptions("총 이익", data.totalProfit, "$", "black")}
+                    />
+                </Col>
+            </Row>
+            <Row className="dashboard-row" gutter={8}>
+                <Col span={8} className="dashboard-col">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={sunburstChartOptions("제품 분류 별 판매량", data.orderDonutData, "개")}
+                    />
+                </Col>
+                <Col span={8} className="dashboard-col">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={sunburstChartOptions("제품 분류 별 매출", data.saleDonutData, "$")}
+                    />
+                </Col>
+                <Col span={8} className="dashboard-col">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={sunburstChartOptions("제품 분류 별 이익", data.profitDonutData, "$")}
+                    />
+                </Col>
+            </Row>
         </div>
     );
 }
