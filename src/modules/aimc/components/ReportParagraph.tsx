@@ -125,7 +125,6 @@ export default function ReportParagraph({
   };
 
   const generateReportCard = useCallback((layoutId: string) => {
-    console.log("또?"); // 이제는 필요할 때만 실행됨
     const existFilterRemoveAll = serviceId !== 7;
     const data = portletItems.find((data) => data.portletId === layoutId);
     if (!data) return <></>;
