@@ -50,8 +50,13 @@
   //height: 100%;
   //padding: 10px;
 }
-.dashboard-wrapper > .dashboard-row:not(:last-child) {
+
+.dashboard-wrapper .dashboard-row {
   margin-bottom: 8px; /* 마지막 Row 제외하고 margin 적용 */
+}
+
+.dashboard-wrapper > .dashboard-row:first-child {
+  margin-bottom: 8px; /* 마지막이자 첫번째 Row에 margin 적용 */
 }
 
 //.dashboard-row {

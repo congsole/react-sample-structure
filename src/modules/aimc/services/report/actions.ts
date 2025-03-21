@@ -182,6 +182,23 @@ export const getSalesByRegion = (
     PRDL: string[],
 ) =>  {
     const filteredOrders = basicallyFilter(startDt, endDt, getFilterData("STAT")!.options, CUST, PRDL);
+    const nationalData = {
+        byCustomer: {},
+        byProduct: {},
+        salesByCustomer: [{ name: "sample", value: -1 }],
+        salesByProduct: [{ name: "sample", value: -1 }],
+    };
+    filteredOrders.forEach((order) => {
+        let custValue = 0, prodValue = 0;
+        filteredOrders.forEach((o) => {
+            custValue += order.고객명 === o.고객명 ? Number(o.수량) : 0;
+            prodValue += order.이름 === o.이름 ? Number(o.수량) : 0;
+        });
+        nationalData.byCustomer = {...nationalData.byCustomer, [order.고객명]: custValue};
+        nationalData.byProduct = {...nationalData.byProduct, [order.이름]: prodValue};
+    });
+    nationalData.salesByCustomer = Object.entries(nationalData.byCustomer).map(([key, value]) => { return {name: key, value: Number(value)}}).sort((a, b) => - Number(a.value) + Number(b.value));
+    nationalData.salesByProduct = Object.entries(nationalData.byProduct).map(([key, value]) => { return {name: key, value: Number(value)}}).sort((a, b) => - Number(a.value) + Number(b.value));
 
     const sidoData = sidoCode.map((sido) => {
         let sidoName = sido.SIDO_NM.replace("특별시", "");
@@ -212,9 +229,14 @@ export const getSalesByRegion = (
         }
     });
     const sigunguData = sigunguCode.map((sigungu) => {
+        let sidoName = sidoCode.find(sido => sido.SIDO_CD === Math.floor(sigungu.SIGUNGU_CD/1000))!.SIDO_NM.replace("특별시", "");
+        sidoName = sidoName.replace("광역시", "");
+        sidoName = sidoName.replace("특별자치시", "");
+        sidoName = sidoName.replace("특별자치도", "");
+
         const index = sigungu.SIGUNGU_NM.indexOf(" ");
         let sigunguName = index > -1 ? sigungu.SIGUNGU_NM.substring(0, index) : sigungu.SIGUNGU_NM;
-        const orders = filteredOrders.filter((order) => order.시군구City.indexOf(sigunguName) !== -1);
+        const orders = filteredOrders.filter((order) => order.도State.indexOf(sidoName) !== -1 && order.시군구City === sigunguName);
         let value = 0;
         let byCustomer = {};
         let byProduct = {};
@@ -239,6 +261,6 @@ export const getSalesByRegion = (
     });
 
     return {
-        sidoData, sigunguData
+       nationalData , sidoData, sigunguData
     };
 };

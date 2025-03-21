@@ -33,7 +33,7 @@ export const AIMC_MENUS = [
                     },
                     {
                         portletId: '2',
-                        title: '2. 판매량 주요 변동 요인',
+                        title: '지역별 주문량',
                         description: '',
                         x: 4,
                         y: 0,

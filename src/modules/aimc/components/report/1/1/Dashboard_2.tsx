@@ -25,67 +25,90 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
     const endDt = useFilterStore((state) => state.getSelectedOptions("endDt"))![0] || "";
     const CUST = useFilterStore((state) => state.getSelectedOptions("CUST")) || [];
     const PRDL = useFilterStore((state) => state.getSelectedOptions("PRDL")) || [];
-    const { sidoData, sigunguData } = getSalesByRegion(startDt, endDt, CUST, PRDL);
+    const { nationalData, sidoData, sigunguData } = getSalesByRegion(startDt, endDt, CUST, PRDL);
     const [mapOptions, setMapOptions] = React.useState<object>();
-    let selectedRegion: {gubun: string, code: number} | null = null;
+
+    let selectedRegion: {gubun: string, code: number} | null = null; // 맵이 리렌더링 되면 드릴다운도 초기화 되므로 리렌더링 없이 지도에서 선택된 지역을 체크해야함.
+    const [selectedRegionState, setSelectedRegionState] = React.useState<{gubun: string, code: number} | null>(); // column차트는 지도에서 지역이 선택될 때마다 리렌더링 되어야 하므로 해당 state에 의존함.
+
     const [salesByCustomerOptions, setSalesByCustomerOptions] = React.useState<object>();
     const [salesByProductOptions, setSalesByProductOptions] = React.useState<object>();
+
+    const sidoGeoJson = React.useMemo(() => Highcharts.geojson(sidoMapData), [sidoMapData]);
+    const sigunguGeoJson = React.useMemo(() => Highcharts.geojson(sigunguMapData), [sigunguMapData]);
+
     React.useEffect(() => {
-        if(!selectedRegion) {
+        if(!selectedRegionState) {
+            setSalesByCustomerOptions(barOptions("고객 주문량 TOP 5", nationalData.salesByCustomer.slice(0, 5)));
+            setSalesByProductOptions(barOptions("제품 주문량 TOP 5", nationalData.salesByProduct.slice(0, 5)));
         } else {
-            if(selectedRegion.gubun === "SIDO_CD") {
-                const sido = sidoData.find(sido => sido.SIDO_CD === selectedRegion!.code)!;
-                setSalesByCustomerOptions(barOptions("title test", sido.salesByCustomer));
-                setSalesByProductOptions(barOptions("title test", sido.salesByProduct));
+            if(selectedRegionState.gubun === "SIDO_CD") {
+                const sido = sidoData.find(sido => sido.SIDO_CD === selectedRegionState!.code)!;
+                setSalesByCustomerOptions(barOptions("고객 주문량 TOP 5", sido.salesByCustomer.slice(0, 5)));
+                setSalesByProductOptions(barOptions("제품 주문량 TOP 5", sido.salesByProduct.slice(0, 5)));
+            }
+            if(selectedRegionState.gubun === "SIGUNGU_CD") {
+                const sigungu = sigunguData.find(sigungu => sigungu.SIGUNGU_CD === selectedRegionState!.code)!;
+                setSalesByCustomerOptions(barOptions("고객 주문량 TOP 5", sigungu.salesByCustomer.slice(0, 5)));
+                setSalesByProductOptions(barOptions("제품 주문량 TOP 5", sigungu.salesByProduct.slice(0, 5)));
             }
         }
-    }, [selectedRegion]);
+    }, [selectedRegionState]);
 
     const drilldown = async (e: DrilldownEventObject) => {
         if (!e.seriesOptions) {
-            if(selectedRegion?.gubun === "SIGUNGU_CD") return;
+            const mapKey = Number(e.point.options.drilldown!);
+            if(mapKey) {
+                selectedRegion = ({gubun: mapKey > 100 ? "SIGUNGU_CD" : "SIDO_CD", code: mapKey});
+                setSelectedRegionState({gubun: mapKey > 100 ? "SIGUNGU_CD" : "SIDO_CD", code: mapKey});
+            }
+            console.log("drilldown:  selectedRegion", selectedRegion);
+
             const chart: Highcharts.Chart = e.point.series.chart;
-            const mapKey = e.point.options.drilldown!;
+            chart.showLoading('데이터 로딩 중...');
 
-            // Load the drilldown map
-            const topology = {
-                type: "Topology",
-                arcs: sigunguMapData.arcs, // 기존 arcs 유지
-                transform: sigunguMapData.transform, // 기존 transform 유지
-                objects: {
-                    BND_SIDO_PG: {
-                        type: "GeometryCollection",
-                        geometries: sigunguMapData.objects.BND_SIGUNGU_PG.geometries.filter(geometry => geometry.properties.SIGUNGU_CD.startsWith(mapKey)),
-                    },
-                },
-            };
+            let data;
 
-            const data = Highcharts.geojson(topology);
+            if (selectedRegion?.gubun === "SIDO_CD") {
+                data = sigunguGeoJson
+                    .filter(d => d.properties.SIGUNGU_CD.startsWith(mapKey))
+                    .map(d => ({
+                        ...d,
+                        value: sigunguData.find(sigungu => sigungu.SIGUNGU_CD.toString() === d.properties["SIGUNGU_CD"])?.value || 0,
+                        drilldown: d.properties["SIGUNGU_CD"],
+                        name: d.properties["SIGUNGU_NM"]
+                    }));
 
-            // Set a non-random bogus value
-            data.forEach((d, i) => {
-                d.value = sigunguData.find(sigungu => sigungu.SIGUNGU_CD.toString() === d.properties["SIGUNGU_CD"])?.value || 0;
-                d.drilldown = d.properties["SIGUNGU_CD"];
-                d.name = d.properties["SIGUNGU_NM"];
-            });
+                chart.addSeriesAsDrilldown(e.point, {
+                    type: 'map',
+                    name: e.point.name,
+                    data,
+                    dataLabels: { enabled: true, format: '{point.properties.SIGUNGU_NM}' },
+                });
+            } else if (selectedRegion?.gubun === "SIGUNGU_CD"){
+                data = sigunguGeoJson
+                    .filter(d => d.properties.SIGUNGU_CD.startsWith(mapKey))
+                    .map(d => ({
+                        ...d,
+                        value: sigunguData.find(sigungu => sigungu.SIGUNGU_CD.toString() === d.properties["SIGUNGU_CD"])?.value || 0,
+                        name: d.properties["SIGUNGU_NM"]
+                    }));
+                chart.addSeriesAsDrilldown(e.point, {
+                    type: 'map',
+                    name: e.point.name,
+                    data,
+                    dataLabels: { enabled: true, format: '{point.properties.SIGUNGU_NM}' },
+                });
+            }
 
-            // Hide loading and add series
+
+
             chart.hideLoading();
-            // clearTimeout(fail);
-            chart.addSeriesAsDrilldown(e.point, {
-                type: 'map',
-                name: '{point.properties.SIGUNGU_NM}',
-                data,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.properties.SIGUNGU_NM}'
-                },
-            });
         }
     };
 
     function fetchTopology() {
-        const data = Highcharts.geojson(sidoMapData);
+        const data = sidoGeoJson;
 
         // Set drilldown pointers
         data.forEach((d, i) => {
@@ -100,6 +123,10 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
             chart: {
                 events: {
                     drilldown,
+                    drillup: function (this: Highcharts.Chart, e: Highcharts.DrillupEventObject){
+                        console.log("드릴업 발생", e.seriesOptions?.name);
+                        this.redraw();
+                    }
                 }
             },
             credits: {
@@ -111,7 +138,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
             },
 
             colorAxis: {
-                min: 0,
+                min: 1,
                 minColor: '#E6E7E8',
                 maxColor: '#005645',
                 visible: false,
@@ -134,13 +161,15 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 },
                 series: {
                     point: {
-                        events: {
-                            click: function (this: Highcharts.Point, event: Highcharts.PointClickEventObject) {
-                                const code = Number(this.options.drilldown);
-                                console.log(code);
-                                selectedRegion = ({gubun: code > 100 ? "SIGUNGU_CD" : "SIDO_CD", code});
-                            }
-                        }
+                        // events: {
+                            // click: function (this: Highcharts.Point, event: Highcharts.PointClickEventObject) {
+                            //     const code = Number(this.options.drilldown);
+                            //     if(code) {
+                            //         selectedRegion = ({gubun: code > 100 ? "SIGUNGU_CD" : "SIDO_CD", code});
+                            //         setSelectedRegionState({gubun: code > 100 ? "SIGUNGU_CD" : "SIDO_CD", code});
+                            //     }
+                            // }
+                        // }
                     }
                 }
             },
@@ -170,18 +199,25 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                     floating: true,
                     format: '{level.name}',
                     events: {
-                        click: function(event: Event, options: Highcharts.BreadcrumbOptions, e: Event) {
+                        click: function(event: Event, options: Highcharts.BreadcrumbOptions) {
                             const code = "drilldown" in options.levelOptions ? options.levelOptions.drilldown : 0;
                             switch (options.level) {
                                 case 0:
                                     selectedRegion = null;
+                                    setSelectedRegionState(null);
                                     break;
-                                    case 1:
-                                        selectedRegion = {gubun: "SIDO_CD", code: Number(code)};
-                                        break;
+                                case 1:
+                                    selectedRegion = {gubun: "SIDO_CD", code: Number(code)};
+                                    setSelectedRegionState({gubun: "SIDO_CD", code: Number(code)});
+                                    break;
+                                case 2:
+                                    selectedRegion = {gubun: "SIGUNGU_CD", code: Number(code)};
+                                    setSelectedRegionState({gubun: "SIGUNGU_CD", code: Number(code)});
+                                    break;
                                 default:
                                     break;
                             };
+                            console.log("breadcrumbs:  selectedRegion", selectedRegion);
                         }
                     },
                 },
@@ -194,11 +230,15 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 },
             }
         });
+
+
     }
 
     React.useEffect(() => {
-        fetchTopology();
-    }, [])
+        if(!selectedRegionState) {
+            fetchTopology();
+        }
+    }, [selectedRegionState])
 
     const barOptions = (title: string, data: Array<{name: string, value: number}> | undefined) =>{
         return {
@@ -206,7 +246,9 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 type: 'column',
                 zooming: {
                     type: 'xy',
-                }
+                },
+                height: 200,
+                width: null,
             },
             title: {
                 text: title,
@@ -225,6 +267,16 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 name: title,
                 data: data ? data!.map(d => d.value) : [],
             }],
+            legend: {
+                enabled: false,
+            },
+            tooltip: {
+                headerFormat: `<span style="color: {point.color}">● </span>{point.category} <br/>`,
+                pointFormat: `주문량: <b>{point.y}</b>`,
+            },
+            credits: {
+                enabled: false // 하단의 로고 지우는 옵션
+            },
         }
     };
 
@@ -242,16 +294,22 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                     />
                 </Col>
                 <Col span={12}>
-                    <Row className="dashboard-row" style={{ border: "1px red solid"}} gutter={8}>
-                        <Col span={12}>
+                    <Row className="dashboard-row" gutter={8}>
+                        <Col span={24}>
                             <HighchartsReact
                                 highcharts={Highcharts}
                                 options={salesByCustomerOptions}
                             />
                         </Col>
+
                     </Row>
-                    <Row className="dashboard-row" style={{ border: "1px red solid"}} gutter={8}>
-                        <Col span={12}>zzzz</Col>
+                    <Row className="dashboard-row" gutter={8}>
+                        <Col span={24}>
+                            <HighchartsReact
+                                highcharts={Highcharts}
+                                options={salesByProductOptions}
+                            />
+                        </Col>
                     </Row>
                 </Col>
             </Row>
