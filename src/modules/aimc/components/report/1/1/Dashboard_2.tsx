@@ -1,6 +1,6 @@
 import React from 'react';
 import Highcharts from 'highcharts/highcharts';
-import {BreadcrumbOptions, DrilldownEventObject, DrillupEventObject} from "highcharts";
+import { DrilldownEventObject } from "highcharts";
 
 import HighchartsReact from 'highcharts-react-official';
 import 'Highcharts/highcharts-more';
@@ -100,8 +100,9 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                     dataLabels: { enabled: true, format: '{point.properties.SIGUNGU_NM}' },
                 });
             }
-
-            chart.hideLoading();
+            setTimeout(() => { // 드릴다운된 차트가 차마 그려지기도 전에 breadcrumbs가 나타나서 클릭될 수 있다. 그런 경우에 오류가 생길 수 있어서 방지차원에서 타임아웃을 줌.
+                chart.hideLoading();
+            }, 500);
         }
     };
 
@@ -109,7 +110,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
         const data = sidoGeoJson;
 
         // Set drilldown pointers
-        data.forEach((d, i) => {
+        data.forEach((d) => {
             d.drilldown = d.properties['SIDO_CD'];
             const value = sidoData.find(sido => sido.SIDO_CD.toString() === d.drilldown)?.value
             d.value = value || 0;
@@ -122,8 +123,12 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 events: {
                     drilldown,
                     drillup: function (this: Highcharts.Chart, e: Highcharts.DrillupEventObject){
-                        console.log("드릴업 발생", e.seriesOptions?.name);
-                        // this.redraw();
+                        this.showLoading("데이터 로딩중...");
+                        this.series.shift(); // 드릴다운 할 때마다 시리즈에 쌓이는 데이터를 드릴업 할 때 하나씩 삭제해줌. 두단계 드릴 업 때는 drillup 함수가 2회 호출됨.
+
+                        setTimeout(() => {
+                            this.hideLoading();
+                        }, 500);
                     }
                 }
             },
@@ -157,19 +162,6 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                         }
                     }
                 },
-                series: {
-                    point: {
-                        // events: {
-                            // click: function (this: Highcharts.Point, event: Highcharts.PointClickEventObject) {
-                            //     const code = Number(this.options.drilldown);
-                            //     if(code) {
-                            //         selectedRegion = ({gubun: code > 100 ? "SIGUNGU_CD" : "SIDO_CD", code});
-                            //         setSelectedRegionState({gubun: code > 100 ? "SIGUNGU_CD" : "SIDO_CD", code});
-                            //     }
-                            // }
-                        // }
-                    }
-                }
             },
             tooltip: {
                 headerFormat: `<b>{point.properties.SIDO_NM}{point.properties.SIGUNGU_NM}</b><br/>`,
@@ -215,8 +207,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                                     break;
                                 default:
                                     break;
-                            };
-                            console.log("breadcrumbs:  selectedRegion", selectedRegion);
+                            }
                         }
                     },
                 },
@@ -234,13 +225,8 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
     }
 
     React.useEffect(() => {
-        if(!selectedRegionState) {
-            fetchTopology();
-        }
-    }, [selectedRegionState]);
-    // React.useEffect(() => {
-    //     fetchTopology();
-    // }, []);
+        fetchTopology();
+    }, []);
 
     const barOptions = (title: string, data: Array<{name: string, value: number}> | undefined) =>{
         return {
