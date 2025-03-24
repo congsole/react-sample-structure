@@ -55,7 +55,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
         }
     }, [selectedRegionState]);
 
-    const drilldown = async (e: DrilldownEventObject) => {
+    const drilldown = (e: DrilldownEventObject) => {
         if (!e.seriesOptions) {
             const mapKey = Number(e.point.options.drilldown!);
             if(mapKey) {
@@ -101,8 +101,6 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 });
             }
 
-
-
             chart.hideLoading();
         }
     };
@@ -125,7 +123,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                     drilldown,
                     drillup: function (this: Highcharts.Chart, e: Highcharts.DrillupEventObject){
                         console.log("드릴업 발생", e.seriesOptions?.name);
-                        this.redraw();
+                        // this.redraw();
                     }
                 }
             },
@@ -196,7 +194,8 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                     textOutline: '1px #000000'
                 },
                 breadcrumbs: {
-                    floating: true,
+                    floating: false,
+                    showFullPath: true,
                     format: '{level.name}',
                     events: {
                         click: function(event: Event, options: Highcharts.BreadcrumbOptions) {
@@ -238,7 +237,10 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
         if(!selectedRegionState) {
             fetchTopology();
         }
-    }, [selectedRegionState])
+    }, [selectedRegionState]);
+    // React.useEffect(() => {
+    //     fetchTopology();
+    // }, []);
 
     const barOptions = (title: string, data: Array<{name: string, value: number}> | undefined) =>{
         return {

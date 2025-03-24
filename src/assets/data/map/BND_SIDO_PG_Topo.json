@@ -13750,6 +13750,13 @@
     },
     "objects": {
         "BND_SIDO_PG": {
+            "hc-recommended-mapview": {
+                "projection": {
+                    "name": "TransverseMercator",
+                    "centralMeridian": 127
+                },
+                "padding": [10, 10, 10, 10]
+            },
             "type": "GeometryCollection",
             "geometries": [
                 {

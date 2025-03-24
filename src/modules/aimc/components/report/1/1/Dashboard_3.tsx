@@ -1,147 +1,324 @@
-import React, {useEffect} from 'react';
-import Highcharts from 'highcharts';
+import React from 'react';
+import Highcharts from 'highcharts/highcharts';
+
 import HighchartsReact from 'highcharts-react-official';
 import 'Highcharts/highcharts-more';
 import 'highcharts/modules/drilldown';
 import 'highcharts/modules/exporting';
 import 'highcharts/modules/export-data';
 import 'highcharts/modules/accessibility';
+import 'highcharts/modules/map';
+import 'highcharts/highmaps';
 
 import { PortletContent } from "modules/aimc/types/report";
-import { getSalesData } from "modules/aimc/services/report/actions";
-import useFilterStore from "modules/aimc/store/filterStore";
+import {DrilldownEventObject, DrillupEventObject} from "highcharts";
+import sidoMapData from "assets/data/map/BND_SIDO_PG_Topo.json"
+import sigunguMapData from "assets/data/map/BND_SIGUNGU_PG_Topo.json"
+import useFilterStore from "../../../../store/filterStore";
+import {getSalesByRegion} from "../../../../services/report/actions";
+const Dashboard: React.FC<PortletContent> = ({key}) => {
+    const startDt = useFilterStore((state) => state.getSelectedOptions("startDt"))![0] || "";
+    const endDt = useFilterStore((state) => state.getSelectedOptions("endDt"))![0] || "";
+    const CUST = useFilterStore((state) => state.getSelectedOptions("CUST")) || [];
+    const PRDL = useFilterStore((state) => state.getSelectedOptions("PRDL")) || [];
+    const { nationalData, sidoData, sigunguData } = getSalesByRegion(startDt, endDt, CUST, PRDL);
 
-const Dashboard_1: React.FC<PortletContent> = ({key}) => {
+    const [mapChartOptions, setMapChartOptions] = React.useState<object>([]);
+    const [koreaMapOptions, setKoreaMapOptions] = React.useState<object>([]);
 
-    const chartOptions_매출_이익_판매량
-        // : Highcharts.ChartOptions
-        = {
-        chart: {
-            type: "bubble",
-            plotBorderWidth: 0,
-            zooming: {
-                type: 'xy'
-            }
-        },
+    const drilldownUS = async function (e: DrilldownEventObject) {
+        if (!e.seriesOptions) {
+            const chart = e.point.series.chart,
+                mapKey = `countries/us/${e.point.options.drilldown}-all`;
 
-        credits: {
-            enabled: false // 하단의 로고 지우는 옵션
-        },
-        legend: {
-            enabled: true
-        },
+            const topology = await fetch(
+                `https://code.highcharts.com/mapdata/${mapKey}.topo.json`
+            ).then(response => response.json());
 
-        title: {
-            text: '매출/이익/제품소분류 별 판매량 분포',
-            align: 'left',
-        },
+            const data = Highcharts.geojson(topology);
 
-        accessibility: {
-            point: {
-                valueDescriptionFormat:
-                    '{index}. {point.name}, valuation: ${point.x}B, revenue: ' +
-                    '${point.y}B, LossesOrProfit: ${point.z}B.'
-            }
-        },
+            // Set a non-random bogus value
+            data.forEach((d, i) => {
+                d.value = i;
+            });
 
-        xAxis: {
-            gridLineWidth: 1,
-            crosshair: true,
-            title: {
-                text: '매출평균'
-            },
-            labels: {
-                format: '${value}'
-            },
-            // accessibility: {
-            //     rangeDescription: 'Range: $2B to $18B.'
-            // }
-        },
-
-        yAxis: {
-            startOnTick: false,
-            endOnTick: false,
-            crosshair: true,
-            title: {
-                text: '이익평균'
-            },
-            labels: {
-                format: '${value}'
-            },
-            // accessibility: {
-            //     rangeDescription: 'Range: $0 to $2B.'
-            // }
-            plotLines: [{
-                value: 0, // 보조선을 긋고 싶은 y값
-                color: 'red', // 보조선 색상
-                width: 2, // 보조선 두께
-                dashStyle: 'ShortDash', // 보조선 스타일
-                label: {
-                    text: null, // 보조선 레이블
-                    align: 'right',
-                    verticalAlign: 'middle',
-                    x: -10
-                }
-            }]
-        },
-
-        tooltip: {
-            useHTML: true,
-            headerFormat: '<table>',
-            pointFormat:
-                '<tr><th colspan="2"><h3>{point.name}</h3></th></tr>' +
-                '<tr><th>매출평균:</th><td>${point.x}</td></tr>' +
-                '<tr><th>이익평균:</th><td>${point.y}</td></tr>' +
-                '<tr><th>총 수량:</th><td>{point.z}</td></tr>',
-            footerFormat: '</table>',
-            followPointer: true,
-            shared: true
-        },
-
-        plotOptions: {
-            series: {
+            chart.addSeriesAsDrilldown(e.point, {
+                type: 'map',
+                name: e.point.name,
+                data,
                 dataLabels: {
-                    enabled: false,
+                    enabled: true,
                     format: '{point.name}'
                 }
-            }
-        },
+            });
+        }
+    };
 
-        // series: [
-        //     {		name: '가전',
-        //         color: '#FF3232',
-        //         data: [
-        //             { x: 15.1, y: 0.756, z: 0.063, name: 'Pinterest' },
-        //             {
-        //                 x: 18.6,
-        //                 y: 0.331,
-        //                 z: 0.0075,
-        //                 name:
-        //                     'Zoom',
-        //             },
-        //             { x: 14.4, y: 2.16, z: 0.911, name: 'Lyft' },
-        //             { x: 7, y: 0.602, z: 0.155, name: 'Fartech' },
-        //             { x: 6.3, y: 0.16, z: 0.0053, name: 'Elastic' },
-        //             { x: 5.9, y: 0.833, z: 0.102, name: 'SolarWinds' },
-        //             { x: 4.8, y: 0.241, z: 0.131, name: 'Anaplan' },
-        //             { x: 4.6, y: 0.088, z: 0.03, name: 'Beyond Meat' },
-        //
-        //         ]
-        //     },
-        //     {
-        //         name: '가구',
-        //         color: '#32ff32',
-        //         data: [
-        //             { x: 3.9, y: 0.118, z: 0.041, name: 'PagerDuty' },
-        //             { x: 2.1, y: 0.254, z: 0.155, name: 'SurveyMonkey' },
-        //             { x: 2, y: 0.15, z: 0.195, name: 'Jumia' },
-        //             { x: 1.8, y: 0.253, z: 0.02, name: 'Upwork' },
-        //             { x: 1.4, y: 0.292, z: 0.064, name: 'Eventbrite' }
-        //         ]
-        //     }
-        // ]
-        series: [],
+    const drilldownKR = function (e: DrilldownEventObject) {
+        if (!e.seriesOptions) {
+            const chart = e.point.series.chart,
+                mapKey = e.point.options.drilldown;
+
+            const topology = sigunguMapData;
+
+            const data = Highcharts.geojson(topology);
+
+            // Set a non-random bogus value
+            const filteredData = data.filter(d => d.properties["SIGUNGU_CD"].toString().startsWith(mapKey!.toString()));
+            filteredData.forEach((d, i) => {
+                d.drilldown = d.properties['SIGUNGU_CD'];
+                d.value = i; // Non-random bogus data
+            });
+
+            chart.addSeriesAsDrilldown(e.point, {
+                type: 'map',
+                name: e.point.name,
+                data: filteredData,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            });
+        }
+    };
+
+    const fetchData = async () => {
+        const topology = await fetch(
+            'https://code.highcharts.com/mapdata/countries/us/us-all.topo.json'
+        ).then(response => response.json());
+        const data = Highcharts.geojson(topology);
+
+        const mapView = topology.objects!.default['hc-recommended-mapview'];
+
+        // Set drilldown pointers
+        data.forEach((d, i) => {
+            d.drilldown = d.properties['hc-key'];
+            d.value = i; // Non-random bogus datas
+        });
+
+        // Instantiate the map
+        setMapChartOptions({
+            chart: {
+                events: {
+                    drilldown: drilldownUS,
+                }
+            },
+
+            title: {
+                text: 'Highcharts Map Drilldown'
+            },
+
+            colorAxis: {
+                min: 0,
+                minColor: '#E6E7E8',
+                maxColor: '#005645'
+            },
+
+            mapView,
+
+            mapNavigation: {
+                enabled: false,
+                // buttonOptions: {
+                //     verticalAlign: 'bottom'
+                // }
+            },
+
+            plotOptions: {
+                map: {
+                    states: {
+                        hover: {
+                            color: '#EEDD66'
+                        }
+                    }
+                }
+            },
+
+            series: [{
+                data,
+                name: 'USA',
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.properties.postal-code}'
+                },
+                custom: {
+                    mapView
+                }
+            }],
+
+            drilldown: {
+                activeDataLabelStyle: {
+                    color: '#FFFFFF',
+                    textDecoration: 'none',
+                    textOutline: '1px #000000'
+                },
+                breadcrumbs: {
+                    floating: true
+                },
+                drillUpButton: {
+                    relativeTo: 'spacingBox',
+                    position: {
+                        x: 0,
+                        y: 60
+                    }
+                }
+            }
+        });
     }
+
+    const drawKoreaMap = () => {
+        const sidoTopologies = Highcharts.geojson(sidoMapData);
+        const sigunguTopologies = Highcharts.geojson(sigunguMapData);
+
+        const mapView = sidoMapData.objects!.BND_SIDO_PG['hc-recommended-mapview'];
+
+        // Instantiate the map
+        setKoreaMapOptions({
+            chart: {
+                events: {
+                    drillup: function (this: Highcharts.Chart, e: Highcharts.DrillupEventObject){
+                        e.preventDefault();
+                        console.log("드릴업 발생", e.seriesOptions?.name);
+                        // this.redraw();
+                    },
+                    drilldown: drilldownKR,
+                }
+                },
+            title: {
+                text: 'Highcharts Map Drilldown'
+            },
+            colorAxis: {
+                min: 0,
+                minColor: '#E6E7E8',
+                maxColor: '#005645'
+            },
+            mapView,
+            mapNavigation: {
+                enabled: false,
+                // buttonOptions: {
+                //     verticalAlign: 'bottom'
+                // }
+            },
+
+            plotOptions: {
+                map: {
+                    states: {
+                        hover: {
+                            color: '#EEDD66'
+                        }
+                    }
+                }
+            },
+
+            series: [{
+                mapData: sidoTopologies,
+                data: sidoData.map(sido => ({
+                    id: sido.SIDO_CD,
+                    name: sido.SIDO_NM,
+                    value: sido.value,
+                    drilldown: sido.SIDO_CD,
+                })),
+                name: '대한민국',
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                },
+                joinBy: ["SIDO_CD", "id"],
+                custom: {
+                    mapView
+                }
+            }],
+
+            drilldown: {
+                activeDataLabelStyle: {
+                    color: '#FFFFFF',
+                    textDecoration: 'none',
+                    textOutline: '1px #000000'
+                },
+                breadcrumbs: {
+                    floating: false,
+                    events: {
+                        click: function(event: Event, options: Highcharts.BreadcrumbOptions) {
+                            event.preventDefault();
+                            // const code = "drilldown" in options.levelOptions ? options.levelOptions.drilldown : 0;
+                            // switch (options.level) {
+                            //     case 0:
+                            //         selectedRegion = null;
+                            //         setSelectedRegionState(null);
+                            //         break;
+                            //     case 1:
+                            //         selectedRegion = {gubun: "SIDO_CD", code: Number(code)};
+                            //         setSelectedRegionState({gubun: "SIDO_CD", code: Number(code)});
+                            //         break;
+                            //     case 2:
+                            //         selectedRegion = {gubun: "SIGUNGU_CD", code: Number(code)};
+                            //         setSelectedRegionState({gubun: "SIGUNGU_CD", code: Number(code)});
+                            //         break;
+                            //     default:
+                            //         break;
+                            // };
+                            console.log("breadcrumbs:  clicked!!!!!!!");
+                        }
+                    },
+                },
+                drillUpButton: {
+                    relativeTo: 'spacingBox',
+                    position: {
+                        x: 0,
+                        y: 60
+                    }
+                },
+                mapZooming: false,
+                // series: [
+                //     ...sidoData.map((sido) => {
+                //         const sidoCd = sido.SIDO_CD;
+                //         const sidoNm = sido.SIDO_NM;
+                //
+                //         return {
+                //             id: sidoCd,
+                //             name: sidoNm,
+                //             data: sigunguData
+                //                 .filter((sigungu) => sigungu.SIGUNGU_CD.toString().startsWith(sidoCd.toString()))
+                //                 .map((sigungu) => ({
+                //                     id: sigungu.SIGUNGU_CD,
+                //                     name: sigungu.SIGUNGU_NM,
+                //                     drilldown: sigungu.SIGUNGU_CD,
+                //                     value: sigungu.value || 0,
+                //                 })),
+                //             mapData: sigunguTopologies.filter((sigungu) =>
+                //                 sigungu.properties["SIGUNGU_CD"].toString().startsWith(sidoCd.toString())
+                //             ),
+                //             joinBy: ['SIGUNGU_CD', 'id'],
+                //         };
+                //     }),
+                    // ...sigunguData.map((sigungu) => {
+                    //     const sigunguCd = sigungu.SIGUNGU_CD;
+                    //     const sigunguNm = sigungu.SIGUNGU_NM;
+                    //
+                    //     return {
+                    //         // id: `${sigunguCd}`,
+                    //         type: 'map',
+                    //         name: sigunguNm,
+                    //         data: sigunguTopologies.filter(sggt => sggt.properties.SIGUNGU_CD === sigunguCd)!
+                    //             .map(sgg => {
+                    //                 return {
+                    //                     ...sgg,
+                    //                     name: sgg.SIGUNGU_NM,
+                    //                     value: sgg.value,
+                    //                 }
+                    //             }),
+                    //         // mapData: sigunguTopologies.find(sggt => sggt.properties.SIGUNGU_CD === sigunguCd),
+                    //         // joinBy: ['SIGUNGU_CD', 'id'],
+                    //     };
+                    // }),
+                // ],
+            }
+        });
+    }
+
+    React.useEffect(() => {
+        fetchData();
+        drawKoreaMap();
+    }, []);
 
     return (
         <div
@@ -150,10 +327,17 @@ const Dashboard_1: React.FC<PortletContent> = ({key}) => {
         >
             <HighchartsReact
                 highcharts={Highcharts}
-                options={chartOptions_매출_이익_판매량}
+                constructorType={'mapChart'}
+                options={mapChartOptions}
             />
+            <HighchartsReact
+                highcharts={Highcharts}
+                constructorType={'mapChart'}
+                options={koreaMapOptions}
+            />
+
         </div>
     );
 }
 
-export default Dashboard_1;
+export default Dashboard;
