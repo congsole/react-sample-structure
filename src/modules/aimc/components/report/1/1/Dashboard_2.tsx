@@ -20,7 +20,7 @@ import sigunguMapData from "assets/data/map/BND_SIGUNGU_PG_Topo.json"
 
 import {getSalesByRegion} from "modules/aimc/services/report/actions";
 
-const Dashboard_2: React.FC<PortletContent> = ({key}) => {
+const Dashboard: React.FC<PortletContent> = ({key}) => {
     const startDt = useFilterStore((state) => state.getSelectedOptions("startDt"))![0] || "";
     const endDt = useFilterStore((state) => state.getSelectedOptions("endDt"))![0] || "";
     const CUST = useFilterStore((state) => state.getSelectedOptions("CUST")) || [];
@@ -143,7 +143,8 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                             this.hideLoading();
                         }, 500);
                     }
-                }
+                },
+                height: 348,
             },
             credits: {
                 enabled: false // 하단의 로고 지우는 옵션
@@ -153,7 +154,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 align: 'left',
             },
             colorAxis: {
-                min: 1,
+                min: 0,
                 minColor: '#E6E7E8',
                 maxColor: '#005645',
                 visible: false,
@@ -170,8 +171,15 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                         hover: {
                             color: '#EEDD66'
                         }
-                    }
+                    },
+                    borderColor:  '#FFFFFF',
+                    borderWidth: 1.5,
                 },
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                    }
+                }
             },
             tooltip: {
                 headerFormat: `<b>{point.properties.SIDO_NM}{point.properties.SIGUNGU_NM}</b><br/>`,
@@ -183,16 +191,14 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 dataLabels: {
                     enabled: true,
                     format: '{point.properties.SIDO_NM}',
-                    style: {
-                        color: 'red',
-                    }
+                    color: '#575757',
                 },
             }],
             drilldown: {
                 activeDataLabelStyle: {
-                    color: '#FFFFFF',
+                    color: '#575757',
                     textDecoration: 'none',
-                    textOutline: '1px #000000'
+                    // textOutline: '1px #000000',
                 },
                 breadcrumbs: {
                     floating: false,
@@ -219,6 +225,9 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                             }
                         }
                     },
+                    separator: {
+                        text: ">",
+                    },
                 },
                 drillUpButton: {
                     relativeTo: 'spacingBox',
@@ -238,7 +247,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
                 zooming: {
                     type: 'xy',
                 },
-                height: 200,
+                height: 168,
                 width: null,
             },
             title: {
@@ -257,6 +266,7 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
             series: [{
                 name: title,
                 data: data ? data!.map(d => d.value) : [],
+                color: 'rgba(0,86,69,0.47)'
             }],
             legend: {
                 enabled: false,
@@ -311,4 +321,4 @@ const Dashboard_2: React.FC<PortletContent> = ({key}) => {
     );
 }
 
-export default Dashboard_2;
+export default Dashboard;
