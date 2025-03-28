@@ -43,7 +43,7 @@ export const AIMC_MENUS = [
                     },
                     {
                         portletId: '3',
-                        title: '3. 지역/일별/단말별 판매량ㅋㅋㅋㅋ',
+                        title: '지역별/일별/제품별 판매량',
                         description: '',
                         x: 4,
                         y: 2,

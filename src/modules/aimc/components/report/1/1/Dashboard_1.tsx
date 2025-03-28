@@ -216,19 +216,19 @@ const Dashboard_1: React.FC<PortletContent> = ({key}) => {
                 <Col span={8} className="dashboard-col">
                     <HighchartsReact
                         highcharts={Highcharts}
-                        options={KPIOptions("총 판매량", data.totalOrders, "개", "black")}
+                        options={KPIOptions("판매량 총계", data.totalOrders, "개", "black")}
                     />
                 </Col>
                 <Col span={8} className="dashboard-col">
                     <HighchartsReact
                         highcharts={Highcharts}
-                        options={KPIOptions("총 매출", data.totalSales, "$", "black")}
+                        options={KPIOptions("매출 총계", data.totalSales, "$", "black")}
                     />
                 </Col>
                 <Col span={8} className="dashboard-col">
                     <HighchartsReact
                         highcharts={Highcharts}
-                        options={KPIOptions("총 이익", data.totalProfit, "$", "black")}
+                        options={KPIOptions("영업이익 총계", data.totalProfit, "$", "black")}
                     />
                 </Col>
             </Row>
@@ -236,19 +236,19 @@ const Dashboard_1: React.FC<PortletContent> = ({key}) => {
                 <Col span={8} className="dashboard-col">
                     <HighchartsReact
                         highcharts={Highcharts}
-                        options={sunburstChartOptions("제품 분류 별 판매량", data.orderDonutData, "개")}
+                        options={sunburstChartOptions("판매량 비중", data.orderDonutData, "개")}
                     />
                 </Col>
                 <Col span={8} className="dashboard-col">
                     <HighchartsReact
                         highcharts={Highcharts}
-                        options={sunburstChartOptions("제품 분류 별 매출", data.saleDonutData, "$")}
+                        options={sunburstChartOptions("매출 비중", data.saleDonutData, "$")}
                     />
                 </Col>
                 <Col span={8} className="dashboard-col">
                     <HighchartsReact
                         highcharts={Highcharts}
-                        options={sunburstChartOptions("제품 분류 별 이익", data.profitDonutData, "$")}
+                        options={sunburstChartOptions("영업이익 비중", data.profitDonutData, "$")}
                     />
                 </Col>
             </Row>

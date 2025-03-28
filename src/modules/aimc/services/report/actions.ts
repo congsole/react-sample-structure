@@ -17,6 +17,13 @@ function getRandomColor() {
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
+function normalizeDateString(dateStr: string) {
+    let [year, month, day] = dateStr.split("-");
+    month = month.padStart(2, "0"); // 월이 한 자리 숫자라면 0을 추가
+    day = day.padStart(2, "0"); // 일이 한 자리 숫자라면 0을 추가
+    return `${year}-${month}-${day}`;
+}
+
 function round(number: number, digit?: number) {
     return Number(number.toFixed(digit));
 }
@@ -42,7 +49,7 @@ const basicallyFilter = (
 
     // 현재 기간
     return data.filter(order => {
-        const orderDate = new Date(order.주문일);
+        const orderDate = new Date(normalizeDateString(order.주문일));
         if(
             orderDate >= startDate &&
             orderDate <= endDate &&
@@ -166,9 +173,9 @@ export function getSalesData(
 
     return {
         series: series || null,
-        totalOrders: { last: round((totalOrders / lastTotalOrders), 3)*100, now: totalOrders },
-        totalSales: { last: round((totalSales / lastTotalSales), 3)*100, now: round(totalSales, 2) } ,
-        totalProfit: { last: round((totalProfit / lastTotalProfit), 3)*100, now: round(totalProfit, 2) },
+        totalOrders: { last: round(((totalOrders - lastTotalOrders) / lastTotalOrders), 3)*100, now: totalOrders },
+        totalSales: { last: round(((totalSales - lastTotalSales) / lastTotalSales), 3)*100, now: round(totalSales, 2) } ,
+        totalProfit: { last: round(((totalProfit - lastTotalProfit) / lastTotalProfit), 3)*100, now: round(totalProfit, 2) },
         orderDonutData,
         saleDonutData,
         profitDonutData,
@@ -264,3 +271,79 @@ export const getSalesByRegion = (
        nationalData , sidoData, sigunguData
     };
 };
+
+export const getDashboard3data = (
+    startDt: string,
+    endDt: string,
+    STAT: string[],
+    CUST: string[],
+    PRDL: string[],
+) => {
+    const orders = basicallyFilter(startDt, endDt, STAT, CUST, PRDL);
+
+    const regionalSalesData = STAT.map(stateName => {
+        const stateOrders = orders.filter(order => order.도State === stateName);
+        const cityListInState = getFilterData("CITY", stateName)?.options || [];
+
+        return {
+            name: stateName,
+            y: stateOrders
+                .reduce((accumulator, currentValue) => {
+                    return accumulator + Number(currentValue.수량)
+                }, 0),
+            drilldown: stateName,
+            drilldownData: {
+                name: stateName,
+                id: stateName,
+                data: cityListInState.map((city) => {
+                    return [
+                        city,
+                        stateOrders
+                            .filter(o => o.시군구City === city)
+                            .reduce((accumulator, currentValue) => {
+                                return accumulator + Number(currentValue.수량)
+                            }, 0)
+                    ] as [string, number];
+                }).filter(city => city[1] > 0),
+            },
+        }
+    }).filter(region => region.y > 0);
+
+    const startDate = new Date(startDt);
+    const endDate = new Date(endDt);
+    const dailySalesData = new Array<[string, number]>();
+
+    while (startDate <= endDate) {
+        const value = orders.filter(o => {
+            return new Date(normalizeDateString(o.주문일)).getTime() === startDate.getTime()
+        }).reduce((accumulator, currentValue) => {
+            return accumulator + Number(currentValue.수량)
+        }, 0);
+        dailySalesData.push([startDate.toISOString().split("T")[0], value]);
+        startDate.setDate(startDate.getDate() + 1);
+    }
+
+    if(PRDL.length === 0) {
+        PRDL = getFilterData("PRDL")?.options || [];
+    }
+    const prdsList = new Array<string>();
+    PRDL.forEach(pl => {
+        const prdsListInState = getFilterData("PRDS", pl)?.options || [];
+        prdsList.push(...prdsListInState);
+    });
+    const productSalesData = prdsList.map(prds => {
+        return {
+            name: prds,
+            y: orders.filter(o => o.제품소분류 === prds).reduce((accumulator, currentValue) => {
+                return accumulator + Number(currentValue.수량)
+            }, 0),
+        } as {name: string, y: number};
+    }).filter(prds => prds.y > 0);
+
+    return {
+        regionalSalesData,
+        dailySalesData,
+        productSalesData,
+    };
+
+}
